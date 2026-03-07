@@ -7,6 +7,7 @@ const DEFAULT_SETTINGS = {
   autoAccept: false,
   autoDownload: true,
   displayIcons: false,
+  makePublic: false,
 };
 
 export class SettingsStore {

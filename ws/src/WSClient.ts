@@ -12,6 +12,7 @@ export class WSClient implements Client {
   lastSeen = new Date();
   readonly remoteAddress?: string;
   networkName?: string = undefined;
+  isPublic = false;
   publicKey?: string;
   deviceType?: DeviceType;
   initialized = false;

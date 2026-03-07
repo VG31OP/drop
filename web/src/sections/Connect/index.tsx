@@ -47,9 +47,9 @@ export const ConnectSection: React.FC = observer(() => {
           </div>
         </div>
       </div>
-      {!!networkStore.otherNetworks.length && (
+      {!!networkStore.otherPublicRooms.length && (
         <div className={clsx('subsection', styles.other)}>
-          <span>{t('localNetworks')}</span>
+          <span>{t('publicRooms.title')}</span>
           <LocalNetworks />
         </div>
       )}

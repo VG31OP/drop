@@ -4,7 +4,8 @@ import {
   ClientNameMessageModel,
   Message,
   MessageType,
-  NetworkModel,
+  PublicRoomModel,
+  MakePublicMessageModel,
   NetworkNameMessageModel,
   TransferMessageModel,
 } from '@filedrop/types';
@@ -24,7 +25,7 @@ export class NetworkStore {
   maxSize = 0;
   appName = defaultAppName;
   rtcConfiguration?: RTCConfiguration = undefined;
-  localNetworks: NetworkModel[] = [];
+  publicRooms: PublicRoomModel[] = [];
 
   clientName?: string = getItem('clientName', undefined);
   networkName?: string = undefined;
@@ -65,9 +66,9 @@ export class NetworkStore {
     return this.transferList.filter(transfer => transfer.isDone);
   }
 
-  get otherNetworks() {
-    return this.localNetworks.filter(
-      network => network.name.toUpperCase() !== this.networkName?.toUpperCase()
+  get otherPublicRooms() {
+    return this.publicRooms.filter(
+      room => room.name.toUpperCase() !== this.networkName?.toUpperCase()
     );
   }
 
@@ -114,6 +115,15 @@ export class NetworkStore {
     };
 
     this.networkName = networkName;
+    this.connection.send(message);
+  }
+
+  setPublicRoom(value: boolean) {
+    const message: MakePublicMessageModel = {
+      type: MessageType.MAKE_PUBLIC,
+      value,
+    };
+
     this.connection.send(message);
   }
 
@@ -218,6 +228,8 @@ export class NetworkStore {
         if (this.networkName) {
           this.updateNetworkName(this.networkName);
         }
+
+        this.setPublicRoom(settingsStore.settings.makePublic);
         break;
       case MessageType.ERROR:
         if (message.mode === 'network') {
@@ -232,8 +244,8 @@ export class NetworkStore {
           this.networkClients.set(client.clientId, client);
         }
         break;
-      case MessageType.LOCAL_NETWORKS:
-        this.localNetworks = message.localNetworks;
+      case MessageType.PUBLIC_ROOMS:
+        this.publicRooms = message.publicRooms;
         break;
       case MessageType.TRANSFER:
         if (message.clientId) {

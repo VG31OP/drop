@@ -1,40 +1,38 @@
 import React from 'react';
 import clsx from 'clsx';
 import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18not';
 
 import styles from './index.module.scss';
 import { Link } from '../../components/Link.js';
 import { applicationStore, networkStore } from '../../stores/index.js';
-import { TargetTile } from '../../components/TargetTile.js';
 
 export const LocalNetworks: React.FC = observer(() => {
-  const networks = networkStore.otherNetworks;
-  if (!networks?.length) {
-    return null;
-  }
+  const { t } = useTranslation();
+  const rooms = networkStore.otherPublicRooms;
 
   return (
     <div className={clsx(styles.list)}>
-      {networks.map(network => (
+      {rooms.length === 0 && (
+        <div className={styles.empty}>{t('publicRooms.empty')}</div>
+      )}
+      {rooms.map(room => (
         <Link
-          to={`/${network.name}`}
-          key={network.name}
-          className={styles.network}
+          to={`/${room.name}`}
+          key={room.name}
+          className={styles.room}
           onClick={() => {
             applicationStore.closeModal();
             applicationStore.setTab('files');
           }}
         >
-          <span>{network.name}</span>
-          <div className={styles.clients}>
-            {network.clients.map(client => (
-              <TargetTile
-                variant="small"
-                key={client.clientId}
-                client={client}
-              />
-            ))}
+          <div className={styles.meta}>
+            <span className={styles.code}>{room.name}</span>
+            <span className={styles.count}>
+              {t('publicRooms.people', { count: room.clients })}
+            </span>
           </div>
+          <span className={styles.joinButton}>{t('publicRooms.join')}</span>
         </Link>
       ))}
     </div>

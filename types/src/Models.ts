@@ -14,6 +14,11 @@ export interface NetworkModel {
   clients: ClientModel[];
 }
 
+export interface PublicRoomModel {
+  name: string;
+  clients: number;
+}
+
 export interface MessageModel {
   type: MessageType;
   secure?: boolean;
@@ -57,6 +62,7 @@ export interface ClientInfoMessageModel extends MessageModel {
   suggestedClientName?: string;
   suggestedNetworkName?: string;
   localNetworks?: NetworkModel[];
+  publicRooms?: PublicRoomModel[];
   rtcConfiguration?: any;
 }
 
@@ -65,10 +71,20 @@ export interface LocalNetworksMessageModel extends MessageModel {
   localNetworks: NetworkModel[];
 }
 
+export interface PublicRoomsMessageModel extends MessageModel {
+  type: MessageType.PUBLIC_ROOMS;
+  publicRooms: PublicRoomModel[];
+}
+
 export interface NetworkNameMessageModel extends MessageModel {
   type: MessageType.NETWORK_NAME;
   networkName: string;
   deviceType?: DeviceType;
+}
+
+export interface MakePublicMessageModel extends MessageModel {
+  type: MessageType.MAKE_PUBLIC;
+  value: boolean;
 }
 
 export interface ClientNameMessageModel extends MessageModel {
@@ -138,7 +154,9 @@ export type Message =
   | AppInfoMessageModel
   | ClientInfoMessageModel
   | LocalNetworksMessageModel
+  | PublicRoomsMessageModel
   | NetworkNameMessageModel
+  | MakePublicMessageModel
   | ClientNameMessageModel
   | TransferMessageModel
   | ActionMessageModel

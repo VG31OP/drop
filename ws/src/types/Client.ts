@@ -7,6 +7,7 @@ export interface Client {
   lastSeen: Date;
   readonly remoteAddress?: string;
   networkName?: string;
+  isPublic?: boolean;
   readonly readyState: number;
   publicKey?: string;
   deviceType?: DeviceType;

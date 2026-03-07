@@ -69,9 +69,6 @@ export const NetworkSection: React.FC = observer(() => {
             <div className={styles.empty}>
               <div>
                 <div>{t('emptyNetwork.title')}</div>
-                {!!networkStore.otherNetworks?.length && (
-                  <div>{t('emptyNetwork.local')}</div>
-                )}
               </div>
               <div className="desktopHidden">
                 <Button onClick={() => applicationStore.setTab('devices')}>
@@ -84,9 +81,12 @@ export const NetworkSection: React.FC = observer(() => {
                 </Button>
               </div>
             </div>
-            <LocalNetworks />
           </>
         )}
+      </div>
+      <div className="subsection">
+        <div className={styles.publicRoomsTitle}>{t('publicRooms.title')}</div>
+        <LocalNetworks />
       </div>
       {clients.length > 0 && transfers.size === 0 && !showPaste && (
         <div className={clsx('mobileHidden', styles.hint)}>

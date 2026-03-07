@@ -15,8 +15,13 @@
   "emptyNetwork": {
     "title": "Nobody is connected to your network.",
     "body": "Open this website elsewhere to connect.",
-    "qr": "QR code",
-    "local": "Local networks are available:"
+    "qr": "QR code"
+  },
+  "publicRooms": {
+    "title": "Public Rooms",
+    "join": "Join",
+    "people": "{{count}} people",
+    "empty": "No public rooms yet. Make your room public in Settings to appear here."
   },
   "tile": "Click on this area to start a transfer.",
   "state": {
@@ -38,7 +43,7 @@
     "bodyTarget": "Start chatting with {{target}}."
   },
   "connect": "Open this page on your other device to copy files:",
-  "localNetworks": "Local networks:",
+  "localNetworks": "Public Rooms:",
   "you": "You",
   "edit": "Edit",
   "send": "Send",
@@ -55,7 +60,8 @@
   "settings": {
     "autoAccept": "Accept all incoming transfers",
     "autoDownload": "Download all complete transfers",
-    "displayIcons": "Display client status icons"
+    "displayIcons": "Display client status icons",
+    "makePublic": "Make my room public"
   },
   "transfers": {
     "title": {

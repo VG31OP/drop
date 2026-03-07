@@ -1,5 +1,4 @@
 import {
-  LocalNetworksMessageModel,
   MessageModel,
   NetworkMessageModel,
   TargetedMessageModel,
@@ -8,7 +7,8 @@ import {
   AppInfoMessageModel,
   ClientInfoMessageModel,
   PingMessageModel,
-  NetworkModel,
+  PublicRoomModel,
+  PublicRoomsMessageModel,
   DisconnectedMessageModel,
   ErrorMessageModel,
 } from '@filedrop/types';
@@ -25,6 +25,7 @@ import {
   isEncryptedMessageModel,
   isInitializeMessageModel,
   isChatMessageModel,
+  isMakePublicMessageModel,
 } from './utils/validation.js';
 import {
   abuseEmail,
@@ -77,19 +78,17 @@ export class ClientManager {
       client.clientId = secretToId(client.secret);
       client.publicKey = message.publicKey;
 
-      const localNetworks = this.getLocalNetworks(client);
-
       this.clients.add(client);
 
       const clientInfoMessage: ClientInfoMessageModel = {
         type: MessageType.CLIENT_INFO,
         clientId: client.clientId,
         suggestedClientName: client.clientName,
-        suggestedNetworkName: localNetworks[0]?.name,
-        localNetworks,
+        publicRooms: this.getPublicRooms(),
         rtcConfiguration: rtcConfiguration(client.clientId),
       };
       client.send(clientInfoMessage);
+      this.sendPublicRoomsMessage();
 
       return;
     }
@@ -109,6 +108,9 @@ export class ClientManager {
 
       client.deviceType = message.deviceType;
       this.setNetworkName(client, name);
+    } else if (isMakePublicMessageModel(message)) {
+      client.isPublic = !!message.value;
+      this.sendPublicRoomsMessage();
     } else if (isClientNameMessageModel(message)) {
       const clients = [...this.clients].filter(
         c => c.clientId === client.clientId
@@ -170,17 +172,6 @@ export class ClientManager {
     this.broadcast(data, targets);
   }
 
-  sendLocalNetworksMessage(client: Client) {
-    const localClients = this.getLocalClients(client);
-    const localNetworks = this.getLocalNetworks(client);
-
-    const localNetworksMessage: LocalNetworksMessageModel = {
-      type: MessageType.LOCAL_NETWORKS,
-      localNetworks,
-    };
-    this.broadcast(localNetworksMessage, localClients);
-  }
-
   getNetworkClients(networkName: string): Client[] {
     const clients = [...this.clients].filter(
       client => client.networkName === networkName
@@ -197,6 +188,32 @@ export class ClientManager {
     uniqueClients.sort((a, b) => b.firstSeen.getTime() - a.firstSeen.getTime());
 
     return uniqueClients;
+  }
+
+  getPublicRooms(): PublicRoomModel[] {
+    const roomMap = new Map<string, number>();
+
+    for (const client of this.clients) {
+      if (!client.isPublic || !client.networkName) continue;
+      roomMap.set(client.networkName, this.getNetworkClients(client.networkName).length);
+    }
+
+    const rooms: PublicRoomModel[] = [...roomMap.entries()].map(([name, clients]) => ({
+      name,
+      clients,
+    }));
+
+    rooms.sort((a, b) => b.clients - a.clients || a.name.localeCompare(b.name));
+    return rooms;
+  }
+
+  sendPublicRoomsMessage() {
+    const publicRoomsMessage: PublicRoomsMessageModel = {
+      type: MessageType.PUBLIC_ROOMS,
+      publicRooms: this.getPublicRooms(),
+    };
+
+    this.broadcast(publicRoomsMessage);
   }
 
   sendNetworkMessage(networkName: string) {
@@ -235,42 +252,7 @@ export class ClientManager {
     if (networkName) {
       this.sendNetworkMessage(networkName);
     }
-
-    this.sendLocalNetworksMessage(client);
-  }
-
-  getLocalClients(client: Client) {
-    return [...this.clients]
-      .filter(c => c.remoteAddress === client.remoteAddress && c.networkName)
-      .sort((a, b) => b.lastSeen.getTime() - a.lastSeen.getTime());
-  }
-
-  getLocalNetworks(client: Client): NetworkModel[] {
-    const localClients = this.getLocalClients(client);
-    const networkNames = new Set<string>();
-
-    for (const client of localClients) {
-      if (client.networkName) {
-        networkNames.add(client.networkName);
-      }
-    }
-
-    const networks: NetworkModel[] = [];
-    for (const name of networkNames.values()) {
-      networks.push({
-        name,
-        clients: this.getNetworkClients(name).map(otherClient => {
-          return {
-            clientId: otherClient.clientId!,
-            clientName: otherClient.clientName,
-            isLocal: otherClient.remoteAddress === client.remoteAddress,
-          };
-        }),
-      });
-    }
-
-    networks.sort((a, b) => b.clients.length - a.clients.length);
-    return networks;
+    this.sendPublicRoomsMessage();
   }
 
   broadcast(message: MessageModel, clients?: Client[]) {

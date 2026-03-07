@@ -1,48 +1,53 @@
 {
   "sections": {
-    "privacy": "Polityka prywatnoÅ›ci",
-    "terms": "Warunki usÅ‚ugi",
-    "abuse": "ZgÅ‚oÅ› naduÅ¼ycie / DMCA",
+    "privacy": "Polityka prywatnosci",
+    "terms": "Warunki uslugi",
+    "abuse": "Zglos naduzycie / DMCA",
     "tech": "Informacje techniczne",
-    "github": "Kod ÅºrÃ³dÅ‚owy",
+    "github": "Kod zrodlowy",
     "twitter": "Obserwuj mnie na Twitterze",
-    "about": "O projekcje"
+    "about": "O projekcie"
   },
   "incompatibleBrowser": {
-    "title": "Niewpierana przeglÄ…darka",
-    "body": "Twoja przeglÄ…darka nie obsÅ‚uguje technologii wymaganych do poprawnego funkcjonowania tej aplikacji. MoÅ¼esz prÃ³bowaÄ‡ korzystaÄ‡ z aplikacji, ale czÄ™Å›Ä‡ funkcjonalnoÅ›ci moÅ¼e nie dziaÅ‚aÄ‡ poprawnie."
+    "title": "Niewspierana przegladarka",
+    "body": "Twoja przegladarka nie obsluguje technologii wymaganych do poprawnego dzialania aplikacji."
   },
   "emptyNetwork": {
-    "title": "Nikt nie jest poÅ‚Ä…czony z TwojÄ… sieciÄ….",
-    "body": "OtwÃ³rz tÄ™ stronÄ™ na innym urzÄ…dzeniu, aby siÄ™ poÅ‚Ä…czyÄ‡.",
-    "qr": "Kod QR",
-    "local": "Lokalne sieci sÄ… dostÄ™pne:"
+    "title": "Nikt nie jest polaczony z Twoim pokojem.",
+    "body": "Otworz te strone na innym urzadzeniu, aby sie polaczyc.",
+    "qr": "Kod QR"
   },
-  "tile": "Kliknij tutaj aby rozpoczÄ…Ä‡ transfer pliku.",
+  "publicRooms": {
+    "title": "Publiczne pokoje",
+    "join": "Dolacz",
+    "people": "{{count}} osob",
+    "empty": "Brak publicznych pokoi. Ustaw pokoj jako publiczny w Ustawieniach, aby pojawil sie na liscie."
+  },
+  "tile": "Kliknij tutaj, aby rozpoczac transfer pliku.",
   "state": {
-    "connecting": "Trwa Å‚Ä…czenie...",
-    "loading": "Åadowanie..."
+    "connecting": "Laczenie...",
+    "loading": "Ladowanie..."
   },
   "clipboard": {
-    "title": "WyÅ›lij schowek",
-    "body": "WysyÅ‚anie: {{fileNames}}"
+    "title": "Wyslij zawartosc schowka",
+    "body": "Wysylanie: {{fileNames}}"
   },
   "chat": {
-    "showMore": "RozwiÅ„",
-    "message": "WyÅ›li wiadomoÅ›Ä‡ do: {{target}}",
+    "showMore": "Pokaz wiecej",
+    "message": "Wiadomosc do {{target}}",
     "everyone": "wszystkich"
   },
   "emptyChat": {
-    "title": "TrochÄ™ tu pusto.",
-    "body": "Zacznij czat z innymi w Twojej sieci.",
-    "bodyTarget": "Zacznij czat z: {{target}}."
+    "title": "Tu jest pusto.",
+    "body": "Zacznij czat z osobami w pokoju.",
+    "bodyTarget": "Zacznij czat z {{target}}."
   },
-  "connect": "OtwÃ³rz tÄ™ stronÄ™ na innym urzÄ…dzeniu, aby wysÅ‚aÄ‡ pliki:",
-  "localNetworks": "Sieci lokalne:",
+  "connect": "Otworz te strone na drugim urzadzeniu, aby wysylac pliki:",
+  "localNetworks": "Publiczne pokoje:",
   "you": "Ty",
   "edit": "Edytuj",
-  "send": "WyÅ›lij",
-  "share": "UdostÄ™pnij",
+  "send": "Wyslij",
+  "share": "Udostepnij",
   "cancelAll": "Anuluj wszystkie",
   "acceptAll": "Akceptuj wszystkie",
   "cancel": "Anuluj",
@@ -53,67 +58,68 @@
   "paste": "Wklej",
   "save": "Zapisz",
   "settings": {
-    "autoAccept": "Akceptuj wszystkie przychodzÄ…ce transfery",
-    "autoDownload": "Pobierz wszystkie ukoÅ„czone transfery",
-    "displayIcons": "PokaÅ¼ ikony statusu klienta"
+    "autoAccept": "Akceptuj wszystkie przychodzace transfery",
+    "autoDownload": "Pobieraj wszystkie zakonczone transfery",
+    "displayIcons": "Wyswietlaj ikony statusu klienta",
+    "makePublic": "Upublicznij moj pokoj"
   },
   "transfers": {
     "title": {
-      "incoming": "PrzychodzÄ…ce",
-      "outgoing": "WychodzÄ…ce",
+      "incoming": "Przychodzace",
+      "outgoing": "Wychodzace",
       "active": "Aktywne",
-      "complete": "UkoÅ„czone"
+      "complete": "Zakonczone"
     },
     "icon": {
-      "state": "Status transferu: {{state}}",
-      "preview": "PodglÄ…d: {{fileName}}"
+      "state": "Stan transferu: {{state}}",
+      "preview": "Podglad: {{fileName}}"
     },
     "progress": "{{offset}} z {{size}}",
-    "elapsed": "{{time}} upÅ‚ynÄ™Å‚o",
-    "left": "{{time}} pozostaÅ‚o"
+    "elapsed": "{{time}} minelo",
+    "left": "pozostalo {{time}}"
   },
   "fileType": {
     "unknown": "",
     "text": "Plik tekstowy",
     "archive": "Archiwum",
     "image": "Obraz",
-    "video": "Film",
-    "audio": "DÅºwiÄ™k",
+    "video": "Wideo",
+    "audio": "Audio",
     "binary": "Plik binarny"
   },
   "transferState": {
-    "incoming": "PrzychodzÄ…cy",
-    "outgoing": "WychodzÄ…cy",
-    "connecting": "ÅÄ…czenie...",
-    "connected": "PoÅ‚Ä…czono",
-    "inProgress": "W trakcie...",
-    "complete": "UkoÅ„czony",
-    "failed": "UkoÅ„czony niepowodzeniem :("
+    "incoming": "Przychodzacy",
+    "outgoing": "Wychodzacy",
+    "connecting": "Laczenie...",
+    "connected": "Polaczono",
+    "inProgress": "W toku...",
+    "complete": "Zakonczono",
+    "failed": "Niepowodzenie :("
   },
   "tabs": {
     "files": "Pliki",
     "devices": "Dodaj urzadzenia",
     "transfers": "Transfery",
-    "connect": "PoÅ‚Ä…cz siÄ™",
+    "connect": "Polacz",
     "chat": "Czat",
     "settings": "Ustawienia"
   },
   "yourName": "Twoja nazwa",
-  "desktopHint": "WciÅ›nij Ctrl+V aby wysÅ‚aÄ‡ zawartoÅ›Ä‡ schowka.",
-  "sendFromClipboard": "WyÅ›lij ze schowka",
+  "desktopHint": "Nacisnij Ctrl+V, aby wyslac zawartosc schowka.",
+  "sendFromClipboard": "Wysylaj ze schowka",
   "disconnected": {
-    "title": "RozÅ‚Ä…czono z serwerem.",
-    "reason": "PowÃ³d:",
+    "title": "Polaczenie zostalo przerwane.",
+    "reason": "Powod:",
     "reasons": {
-      "cryptoRequired": "Ta instancja wymaga WebCrypto. MoÅ¼liwe problemy: Twoje poÅ‚Ä…czenie ze stronÄ… nie jest przez HTTPS lub Twoja przeglÄ…darka nie wspiera WebCrypto.",
+      "cryptoRequired": "Ta instancja wymaga WebCrypto. Mozliwe przyczyny: brak HTTPS albo brak wsparcia WebCrypto.",
       "notSpecified": "Nieznany."
     }
   },
   "error": {
     "network": {
-      "networkFull": "Wybrana sieÄ‡ jest peÅ‚na, proszÄ™ wybraÄ‡ innÄ… sieÄ‡."
+      "networkFull": "Wybrany pokoj jest pelny, wybierz inny."
     }
   },
-  "secure": "Ta instancja wymaga peÅ‚nego szyfrowania danych (metadane pliku, podglÄ…dy, czat) miÄ™dzy czÅ‚onkami sieci.",
-  "insecure": "Ta instancja pozwala na nieszyfrowanÄ… wymianÄ™ danych miÄ™dzy czÅ‚onkami sieci, co moÅ¼e pozwoliÄ‡ administratorowi instancji na wglÄ…d do danych (metadane pliku, podglÄ…dy, czat). Transfery plikÃ³w sÄ… szyfrowane."
+  "secure": "Ta instancja zapewnia szyfrowanie danych miedzy klientami.",
+  "insecure": "Ta instancja dopuszcza nieszyfrowana wymiane danych."
 }

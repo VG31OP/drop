@@ -5,7 +5,7 @@ import { runInAction } from 'mobx';
 import clsx from 'clsx';
 
 import { Toggle } from '../../components/Toggle.js';
-import { settingsStore } from '../../stores/index.js';
+import { networkStore, settingsStore } from '../../stores/index.js';
 
 export const SettingsSection: React.FC = observer(() => {
   const { t } = useTranslation();
@@ -18,7 +18,14 @@ export const SettingsSection: React.FC = observer(() => {
           key={key}
           label={t(`settings.${key}`)}
           value={settings[key]}
-          onChange={value => runInAction(() => (settings[key] = value))}
+          onChange={value =>
+            runInAction(() => {
+              settings[key] = value;
+              if (key === 'makePublic') {
+                networkStore.setPublicRoom(value);
+              }
+            })
+          }
         />
       ))}
     </div>

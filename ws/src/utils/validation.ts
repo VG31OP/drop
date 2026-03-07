@@ -13,6 +13,7 @@ import {
   DeviceType,
   InitializeMessageModel,
   ChatMessageModel,
+  MakePublicMessageModel,
 } from '@filedrop/types';
 
 const messageModelSchema = Joi.object({
@@ -37,6 +38,11 @@ const networkNameMessageModelSchema = Joi.object({
 const clientNameMessageModelSchema = Joi.object({
   type: Joi.string().equal(MessageType.CLIENT_NAME).required(),
   clientName: Joi.string().max(32).required(),
+}).required();
+
+const makePublicMessageModelSchema = Joi.object({
+  type: Joi.string().equal(MessageType.MAKE_PUBLIC).required(),
+  value: Joi.boolean().required(),
 }).required();
 
 const chatMessageModelSchema = Joi.object({
@@ -109,6 +115,12 @@ export function isClientNameMessageModel(
   message: MessageModel | ClientNameMessageModel
 ): message is ClientNameMessageModel {
   return !clientNameMessageModelSchema.validate(message).error;
+}
+
+export function isMakePublicMessageModel(
+  message: MessageModel | MakePublicMessageModel
+): message is MakePublicMessageModel {
+  return !makePublicMessageModelSchema.validate(message).error;
 }
 
 export function isChatMessageModel(
