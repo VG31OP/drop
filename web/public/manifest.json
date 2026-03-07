@@ -1,0 +1,16 @@
+{
+  "name": "FileDrop",
+  "short_name": "FileDrop",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#08213f",
+  "background_color": "#041428",
+  "icons": [
+    {
+      "src": "icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

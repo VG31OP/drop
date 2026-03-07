@@ -1,26 +1,31 @@
 .clientName {
   display: flex;
   align-items: center;
+  min-height: 44px;
+}
 
-  button {
-    svg {
-      font-size: 1.4rem;
-    }
+.clientName button {
+  margin-inline-start: 0.5em;
+}
 
-    margin-inline-start: 0.5em;
-  }
+.clientName button svg {
+  font-size: 1.2rem;
+}
 
-  input {
-    padding: 5px 10px;
-  }
+.clientName input {
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  min-height: 44px;
+}
 
-  .view,
-  .edit {
-    display: flex;
-    align-items: center;
-  }
+.view,
+.edit {
+  display: flex;
+  align-items: center;
+}
 
-  .view {
-    cursor: pointer;
-  }
+.view {
+  cursor: pointer;
 }

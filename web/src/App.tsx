@@ -2,8 +2,6 @@ import React, { Suspense } from 'react';
 import { Router, Route, Switch } from 'wouter';
 import { useTranslation } from 'react-i18not';
 
-import './App.scss';
-
 import { Home } from './screens/Home.js';
 import { Redirect } from './screens/Redirect.js';
 import { Header } from './components/Header.js';
@@ -22,36 +20,38 @@ export const App: React.FC = () => {
   document.body.dir = dir;
 
   return (
-    <div className="app">
+    <div className="appRoot">
       <Header />
       <Status />
-      <Suspense>
-        <Router>
-          <Switch>
-            <Route path="/abuse">
-              <Abuse />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/privacy">
-              <Privacy />
-            </Route>
-            <Route path="/tos">
-              <ToS />
-            </Route>
-            <Route path="/tech">
-              <TechnicalInformation />
-            </Route>
-            <Route path="/:networkName">
-              <Home />
-            </Route>
-            <Route>
-              <Redirect />
-            </Route>
-          </Switch>
-        </Router>
-      </Suspense>
+      <main className="appContent">
+        <Suspense>
+          <Router>
+            <Switch>
+              <Route path="/abuse">
+                <Abuse />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/privacy">
+                <Privacy />
+              </Route>
+              <Route path="/tos">
+                <ToS />
+              </Route>
+              <Route path="/tech">
+                <TechnicalInformation />
+              </Route>
+              <Route path="/:networkName">
+                <Home />
+              </Route>
+              <Route>
+                <Redirect />
+              </Route>
+            </Switch>
+          </Router>
+        </Suspense>
+      </main>
     </div>
   );
 };

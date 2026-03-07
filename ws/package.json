@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "author": "Vraj Shiroya <vraj@shiroya.in> (https://drop.shiroya.in)",
+  "homepage": "https://drop.shiroya.in",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VG31OP/drop.git"
+  },
   "dependencies": {
     "@fastify/compress": "^6.4.0",
     "@fastify/static": "^6.10.2",

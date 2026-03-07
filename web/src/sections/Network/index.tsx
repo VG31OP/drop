@@ -74,7 +74,7 @@ export const NetworkSection: React.FC = observer(() => {
                 )}
               </div>
               <div className="desktopHidden">
-                <Button onClick={() => applicationStore.setTab('connect')}>
+                <Button onClick={() => applicationStore.setTab('devices')}>
                   {t('emptyNetwork.qr')}
                 </Button>
               </div>

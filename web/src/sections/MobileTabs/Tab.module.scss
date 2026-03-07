@@ -1,37 +1,41 @@
 .tab {
   background: transparent;
-  color: var(--color-fg);
+  color: var(--muted);
   flex: 1;
-  padding: 15px;
-  border-radius: 5px;
-  font-size: 0;
-  padding-bottom: max(env(safe-area-inset-bottom, 15px), 15px);
+  min-height: 52px;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  padding: 8px 6px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-weight: normal;
+  justify-content: center;
+  font-weight: 500;
+  gap: 2px;
 
   span {
     position: relative;
     display: inline-block;
   }
 
-  &:not(:last-child) {
-    margin-inline-end: 10px;
+  svg {
+    font-size: 1.25rem;
   }
 
-  svg {
-    font-size: 1.5rem;
+  small {
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
   }
 
   &.active,
   &:hover {
-    color: var(--color-accent);
-  }
-
-  .title {
-    font-size: 0.8rem;
-    margin-top: 5px;
+    color: #fff;
+    background: linear-gradient(
+      145deg,
+      rgba(108, 99, 255, 0.45),
+      rgba(0, 212, 255, 0.18)
+    );
+    box-shadow: var(--glow);
   }
 }

@@ -1,13 +1,14 @@
 .count {
   position: absolute;
-  inset-block-start: -7.5px;
-  inset-inline-end: -7.5px;
-  background: red;
+  inset-block-start: -6px;
+  inset-inline-end: -6px;
+  background: linear-gradient(145deg, #ff5f7d, #ff2e65);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 100%;
   font-size: 10px;
-  width: 15px;
-  height: 15px;
-  color: var(--color-fg);
+  width: 18px;
+  height: 18px;
+  color: #fff;
 
   display: flex;
   justify-content: center;

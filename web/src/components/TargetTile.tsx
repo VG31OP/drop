@@ -20,6 +20,7 @@ export const TargetTile = observer(
       const isLocal = client.isLocal;
       const isMobile = client.deviceType === DeviceType.MOBILE;
       const displayIcons = settingsStore.settings.displayIcons;
+      const avatar = (client.clientName || '?')[0].toUpperCase();
 
       return (
         <div
@@ -38,6 +39,7 @@ export const TargetTile = observer(
           ref={ref}
           {...props}
         >
+          <span className={styles.avatar}>{avatar}</span>
           {variant === 'big' && displayIcons && (
             <div className={styles.icons}>
               {isSecure && <IoLockClosed className={styles.secure} />}

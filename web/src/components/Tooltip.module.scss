@@ -12,8 +12,9 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.1s ease-in-out all;
-    background: var(--color-bg);
-    border-radius: 5px;
+    background: rgba(10, 10, 15, 0.96);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    border-radius: 10px;
     padding: 5px 10px;
     font-size: 0.8rem;
     width: max-content;

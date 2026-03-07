@@ -1,5 +1,5 @@
 .overlay {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(2, 10, 22, 0.72);
   position: absolute;
   top: 0;
   left: 0;
@@ -22,10 +22,15 @@
 }
 
 .title {
-  background: var(--color-bg-soft);
+  background: linear-gradient(
+    135deg,
+    rgba(23, 66, 116, 0.6) 0%,
+    rgba(13, 38, 69, 0.8) 100%
+  );
+  border: 1px solid rgba(97, 186, 255, 0.24);
   padding: 15px;
   position: relative;
-  border-radius: 5px;
+  border-radius: 14px;
   margin-block-end: 1rem;
 
   display: flex;

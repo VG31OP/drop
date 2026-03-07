@@ -1,11 +1,23 @@
 .tabs {
-  --tab-padding: 5px;
+  position: fixed;
+  inset-inline: 10px;
+  bottom: max(8px, env(safe-area-inset-bottom, 8px));
   display: flex;
-  background: var(--color-bg-soft);
-  border-top: 1px solid var(--color-primary);
+  gap: 8px;
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid var(--surface-border);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.04)
+  );
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  backdrop-filter: blur(20px);
+  z-index: 60;
 }
 
-@media screen and (min-width: 768px) {
+@media (min-width: 960px) {
   .tabs {
     display: none;
   }

@@ -1,5 +1,10 @@
 import React from 'react';
-import { IoQrCode, IoChatbubbles, IoHome, IoSettings } from 'react-icons/io5';
+import {
+  IoChatbubbles,
+  IoCloudUpload,
+  IoPhonePortrait,
+  IoSettings,
+} from 'react-icons/io5';
 import { observer } from 'mobx-react-lite';
 
 import styles from './index.module.scss';
@@ -10,18 +15,18 @@ import { NotificationCount } from '../../components/NotificationCount.js';
 export const MobileTabs: React.FC = observer(() => {
   return (
     <div className={styles.tabs} role="tablist">
-      <Tab id="transfers">
+      <Tab id="files" label="Files">
         <NotificationCount count={networkStore.incomingTransfers.length} />
-        <IoHome />
+        <IoCloudUpload />
       </Tab>
-      <Tab id="connect">
-        <IoQrCode />
+      <Tab id="devices" label="Add Devices">
+        <IoPhonePortrait />
       </Tab>
-      <Tab id="chat">
+      <Tab id="chat" label="Chat">
         <NotificationCount count={chatStore.unread} />
         <IoChatbubbles />
       </Tab>
-      <Tab id="settings">
+      <Tab id="settings" label="Settings">
         <IoSettings />
       </Tab>
     </div>

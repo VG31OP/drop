@@ -7,14 +7,11 @@ export const About: React.FC = () => {
   return (
     <TextSection>
       <h2>Welcome</h2>
-      <p>Welcome to filedrop! Let me explain what this website is.</p>
+      <p>Welcome to FileDrop by Vraj Shiroya.</p>
       <p>
-        This website allows you to copy files over the network (LAN if both
-        devices are on the same local network and support WebRTC, otherwise the
-        traffic goes through a TURN relay). Originally I've created this project
-        to avoid logging into my e-mail on computers I don't own or having to
-        type long URLs by hand. I hope it is as useful for you as it is for me.
-        :)
+        FileDrop lets you securely transfer files over the network. If both
+        devices support direct WebRTC, transfer stays peer-to-peer. Otherwise,
+        relay fallback is used to keep transfers working.
       </p>
       <p>You can start a file transfer in a few easy steps:</p>
       <ol>
@@ -29,16 +26,21 @@ export const About: React.FC = () => {
         </li>
         <li>Accept the transfer on another device.</li>
       </ol>
-      <p>filedrop is open source!</p>
+      <p>FileDrop is open source.</p>
       <p>
-        <a href="https://github.com/mat-sz/filedrop">
+        <a href="https://github.com/VG31OP/drop">
           The code is available on GitHub.
         </a>
       </p>
       <p>
-        If you enjoy using this app please consider giving that project a star.
-        You can also report issues there or help the project by creating a pull
-        request.
+        If you find this useful, star the repository and contribute fixes or
+        improvements.
+      </p>
+      <p>
+        Contact: <a href="mailto:vraj@shiroya.in">vraj@shiroya.in</a>
+      </p>
+      <p>
+        Website: <a href="https://drop.shiroya.in">drop.shiroya.in</a>
       </p>
       <p>
         By interacting with the service you accept our{' '}

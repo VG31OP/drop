@@ -1,18 +1,20 @@
 .you {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  grid-gap: 15px;
+  gap: 14px;
   align-items: center;
+}
+
+.info {
+  min-width: 0;
 }
 
 .actions {
   font-size: 0;
+  display: flex;
+  gap: 8px;
+}
 
-  button {
-    margin-inline-start: 0.5rem;
-  }
-
-  svg {
-    font-size: 1.4rem;
-  }
+.actions svg {
+  font-size: 1.2rem;
 }

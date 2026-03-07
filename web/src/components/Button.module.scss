@@ -1,12 +1,23 @@
 .button {
   display: inline-block;
-  background-color: var(--color-primary);
-  color: var(--color-fg);
+  background: linear-gradient(
+    135deg,
+    rgba(38, 128, 199, 0.7) 0%,
+    rgba(24, 92, 148, 0.9) 100%
+  );
+  color: var(--text);
   padding: 10px 20px;
   font-size: 14px;
-  border-radius: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(97, 186, 255, 0.3);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    background-color: var(--color-primary-soft);
+    background: linear-gradient(
+      135deg,
+      rgba(58, 161, 237, 0.8) 0%,
+      rgba(28, 113, 182, 0.95) 100%
+    );
   }
 }

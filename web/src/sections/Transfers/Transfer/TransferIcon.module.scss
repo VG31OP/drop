@@ -1,24 +1,25 @@
 .icon {
   position: relative;
   font-size: 0;
-  background-color: var(--color-primary);
-  padding: 10px 0;
-  border-radius: 5px;
-  width: 60px;
-  height: 60px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  width: 56px;
+  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
 
-  & > svg {
-    width: auto;
-    height: 35px;
-  }
+.icon > svg {
+  width: auto;
+  height: 30px;
+  color: var(--accent);
+}
 
-  & > img {
-    width: 60px;
-    height: 60px;
-    margin: -10px 0;
-    border-radius: 5px;
-  }
+.icon > img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
 }

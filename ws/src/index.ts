@@ -31,9 +31,10 @@ const manifest = {
   ],
   start_url: '/',
   display: 'standalone',
-  theme_color: '#1b1b1d',
-  background_color: '#1b1b1d',
-  name: appName || 'filedrop',
+  theme_color: '#08213f',
+  background_color: '#041428',
+  name: appName || 'FileDrop',
+  short_name: 'FileDrop',
 };
 const manifestString = JSON.stringify(manifest);
 const maxAge = 30 * 24 * 60 * 60 * 1000;

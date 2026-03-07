@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import clsx from 'clsx';
 import { useTranslation } from 'react-i18not';
 import { IoAdd } from 'react-icons/io5';
@@ -20,6 +20,7 @@ export const NetworkTile: React.FC<NetworkTileProps> = ({
   icon,
 }) => {
   const { t } = useTranslation();
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const onDrop = (files: File[]) => {
     for (const file of files) {
@@ -28,7 +29,12 @@ export const NetworkTile: React.FC<NetworkTileProps> = ({
   };
 
   const onClick = () => {
-    onSelect?.(client.clientId);
+    if (onSelect) {
+      onSelect(client.clientId);
+      return;
+    }
+
+    inputRef.current?.click();
   };
 
   return (
@@ -42,8 +48,10 @@ export const NetworkTile: React.FC<NetworkTileProps> = ({
       >
         {!onSelect && (
           <input
+            ref={inputRef}
             type="file"
             tabIndex={0}
+            onClick={e => e.stopPropagation()}
             onChange={e => {
               if (e.target.files) {
                 onDrop([...e.target.files]);

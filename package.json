@@ -1,5 +1,11 @@
 {
-  "name": "filedrop",
+  "name": "filedrop-shiroya",
+  "author": "Vraj Shiroya <vraj@shiroya.in> (https://drop.shiroya.in)",
+  "homepage": "https://drop.shiroya.in",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VG31OP/drop.git"
+  },
   "private": true,
   "workspaces": [
     "web",

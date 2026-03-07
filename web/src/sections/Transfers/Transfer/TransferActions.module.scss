@@ -2,36 +2,29 @@
   font-size: 0;
   display: flex;
   align-items: center;
+  gap: 8px;
+}
 
-  button,
-  a {
-    margin-inline-start: 0.5rem;
-    font-size: 0;
+.actions button,
+.actions a {
+  font-size: 0;
+}
 
-    svg {
-      font-size: 2rem;
-    }
+.actions button svg,
+.actions a svg {
+  font-size: 1.15rem;
+}
 
-    &.copy {
-      svg {
-        height: 1.1rem;
-      }
-    }
+.copy svg {
+  height: 1rem;
+}
 
-    &.positive {
-      background-color: var(--green-soft);
+.positive {
+  background: linear-gradient(145deg, rgba(40, 209, 124, 0.95), rgba(40, 209, 124, 0.7));
+  border-color: rgba(173, 255, 213, 0.35);
+}
 
-      &:hover {
-        background-color: var(--green);
-      }
-    }
-
-    &.negative {
-      background-color: var(--red-soft);
-
-      &:hover {
-        background-color: var(--red);
-      }
-    }
-  }
+.negative {
+  background: linear-gradient(145deg, rgba(255, 95, 125, 0.95), rgba(255, 95, 125, 0.75));
+  border-color: rgba(255, 179, 193, 0.35);
 }

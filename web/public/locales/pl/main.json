@@ -1,48 +1,48 @@
 {
   "sections": {
-    "privacy": "Polityka prywatności",
-    "terms": "Warunki usługi",
-    "abuse": "Zgłoś nadużycie / DMCA",
+    "privacy": "Polityka prywatnoÅ›ci",
+    "terms": "Warunki usÅ‚ugi",
+    "abuse": "ZgÅ‚oÅ› naduÅ¼ycie / DMCA",
     "tech": "Informacje techniczne",
-    "github": "Kod źródłowy",
+    "github": "Kod ÅºrÃ³dÅ‚owy",
     "twitter": "Obserwuj mnie na Twitterze",
     "about": "O projekcje"
   },
   "incompatibleBrowser": {
-    "title": "Niewpierana przeglądarka",
-    "body": "Twoja przeglądarka nie obsługuje technologii wymaganych do poprawnego funkcjonowania tej aplikacji. Możesz próbować korzystać z aplikacji, ale część funkcjonalności może nie działać poprawnie."
+    "title": "Niewpierana przeglÄ…darka",
+    "body": "Twoja przeglÄ…darka nie obsÅ‚uguje technologii wymaganych do poprawnego funkcjonowania tej aplikacji. MoÅ¼esz prÃ³bowaÄ‡ korzystaÄ‡ z aplikacji, ale czÄ™Å›Ä‡ funkcjonalnoÅ›ci moÅ¼e nie dziaÅ‚aÄ‡ poprawnie."
   },
   "emptyNetwork": {
-    "title": "Nikt nie jest połączony z Twoją siecią.",
-    "body": "Otwórz tę stronę na innym urządzeniu, aby się połączyć.",
+    "title": "Nikt nie jest poÅ‚Ä…czony z TwojÄ… sieciÄ….",
+    "body": "OtwÃ³rz tÄ™ stronÄ™ na innym urzÄ…dzeniu, aby siÄ™ poÅ‚Ä…czyÄ‡.",
     "qr": "Kod QR",
-    "local": "Lokalne sieci są dostępne:"
+    "local": "Lokalne sieci sÄ… dostÄ™pne:"
   },
-  "tile": "Kliknij tutaj aby rozpocząć transfer pliku.",
+  "tile": "Kliknij tutaj aby rozpoczÄ…Ä‡ transfer pliku.",
   "state": {
-    "connecting": "Trwa łączenie...",
-    "loading": "Ładowanie..."
+    "connecting": "Trwa Å‚Ä…czenie...",
+    "loading": "Åadowanie..."
   },
   "clipboard": {
-    "title": "Wyślij schowek",
-    "body": "Wysyłanie: {{fileNames}}"
+    "title": "WyÅ›lij schowek",
+    "body": "WysyÅ‚anie: {{fileNames}}"
   },
   "chat": {
-    "showMore": "Rozwiń",
-    "message": "Wyśli wiadomość do: {{target}}",
+    "showMore": "RozwiÅ„",
+    "message": "WyÅ›li wiadomoÅ›Ä‡ do: {{target}}",
     "everyone": "wszystkich"
   },
   "emptyChat": {
-    "title": "Trochę tu pusto.",
+    "title": "TrochÄ™ tu pusto.",
     "body": "Zacznij czat z innymi w Twojej sieci.",
     "bodyTarget": "Zacznij czat z: {{target}}."
   },
-  "connect": "Otwórz tę stronę na innym urządzeniu, aby wysłać pliki:",
+  "connect": "OtwÃ³rz tÄ™ stronÄ™ na innym urzÄ…dzeniu, aby wysÅ‚aÄ‡ pliki:",
   "localNetworks": "Sieci lokalne:",
   "you": "Ty",
   "edit": "Edytuj",
-  "send": "Wyślij",
-  "share": "Udostępnij",
+  "send": "WyÅ›lij",
+  "share": "UdostÄ™pnij",
   "cancelAll": "Anuluj wszystkie",
   "acceptAll": "Akceptuj wszystkie",
   "cancel": "Anuluj",
@@ -53,24 +53,24 @@
   "paste": "Wklej",
   "save": "Zapisz",
   "settings": {
-    "autoAccept": "Akceptuj wszystkie przychodzące transfery",
-    "autoDownload": "Pobierz wszystkie ukończone transfery",
-    "displayIcons": "Pokaż ikony statusu klienta"
+    "autoAccept": "Akceptuj wszystkie przychodzÄ…ce transfery",
+    "autoDownload": "Pobierz wszystkie ukoÅ„czone transfery",
+    "displayIcons": "PokaÅ¼ ikony statusu klienta"
   },
   "transfers": {
     "title": {
-      "incoming": "Przychodzące",
-      "outgoing": "Wychodzące",
+      "incoming": "PrzychodzÄ…ce",
+      "outgoing": "WychodzÄ…ce",
       "active": "Aktywne",
-      "complete": "Ukończone"
+      "complete": "UkoÅ„czone"
     },
     "icon": {
       "state": "Status transferu: {{state}}",
-      "preview": "Podgląd: {{fileName}}"
+      "preview": "PodglÄ…d: {{fileName}}"
     },
     "progress": "{{offset}} z {{size}}",
-    "elapsed": "{{time}} upłynęło",
-    "left": "{{time}} pozostało"
+    "elapsed": "{{time}} upÅ‚ynÄ™Å‚o",
+    "left": "{{time}} pozostaÅ‚o"
   },
   "fileType": {
     "unknown": "",
@@ -78,40 +78,42 @@
     "archive": "Archiwum",
     "image": "Obraz",
     "video": "Film",
-    "audio": "Dźwięk",
+    "audio": "DÅºwiÄ™k",
     "binary": "Plik binarny"
   },
   "transferState": {
-    "incoming": "Przychodzący",
-    "outgoing": "Wychodzący",
-    "connecting": "Łączenie...",
-    "connected": "Połączono",
+    "incoming": "PrzychodzÄ…cy",
+    "outgoing": "WychodzÄ…cy",
+    "connecting": "ÅÄ…czenie...",
+    "connected": "PoÅ‚Ä…czono",
     "inProgress": "W trakcie...",
-    "complete": "Ukończony",
-    "failed": "Ukończony niepowodzeniem :("
+    "complete": "UkoÅ„czony",
+    "failed": "UkoÅ„czony niepowodzeniem :("
   },
   "tabs": {
+    "files": "Pliki",
+    "devices": "Dodaj urzadzenia",
     "transfers": "Transfery",
-    "connect": "Połącz się",
+    "connect": "PoÅ‚Ä…cz siÄ™",
     "chat": "Czat",
     "settings": "Ustawienia"
   },
   "yourName": "Twoja nazwa",
-  "desktopHint": "Wciśnij Ctrl+V aby wysłać zawartość schowka.",
-  "sendFromClipboard": "Wyślij ze schowka",
+  "desktopHint": "WciÅ›nij Ctrl+V aby wysÅ‚aÄ‡ zawartoÅ›Ä‡ schowka.",
+  "sendFromClipboard": "WyÅ›lij ze schowka",
   "disconnected": {
-    "title": "Rozłączono z serwerem.",
-    "reason": "Powód:",
+    "title": "RozÅ‚Ä…czono z serwerem.",
+    "reason": "PowÃ³d:",
     "reasons": {
-      "cryptoRequired": "Ta instancja wymaga WebCrypto. Możliwe problemy: Twoje połączenie ze stroną nie jest przez HTTPS lub Twoja przeglądarka nie wspiera WebCrypto.",
+      "cryptoRequired": "Ta instancja wymaga WebCrypto. MoÅ¼liwe problemy: Twoje poÅ‚Ä…czenie ze stronÄ… nie jest przez HTTPS lub Twoja przeglÄ…darka nie wspiera WebCrypto.",
       "notSpecified": "Nieznany."
     }
   },
   "error": {
     "network": {
-      "networkFull": "Wybrana sieć jest pełna, proszę wybrać inną sieć."
+      "networkFull": "Wybrana sieÄ‡ jest peÅ‚na, proszÄ™ wybraÄ‡ innÄ… sieÄ‡."
     }
   },
-  "secure": "Ta instancja wymaga pełnego szyfrowania danych (metadane pliku, podglądy, czat) między członkami sieci.",
-  "insecure": "Ta instancja pozwala na nieszyfrowaną wymianę danych między członkami sieci, co może pozwolić administratorowi instancji na wgląd do danych (metadane pliku, podglądy, czat). Transfery plików są szyfrowane."
+  "secure": "Ta instancja wymaga peÅ‚nego szyfrowania danych (metadane pliku, podglÄ…dy, czat) miÄ™dzy czÅ‚onkami sieci.",
+  "insecure": "Ta instancja pozwala na nieszyfrowanÄ… wymianÄ™ danych miÄ™dzy czÅ‚onkami sieci, co moÅ¼e pozwoliÄ‡ administratorowi instancji na wglÄ…d do danych (metadane pliku, podglÄ…dy, czat). Transfery plikÃ³w sÄ… szyfrowane."
 }

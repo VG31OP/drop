@@ -2,35 +2,37 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  background: none;
-  padding: 0;
-  color: var(--color-fg-soft);
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 12px;
+  color: var(--muted);
   font-size: 1rem;
-  position: relative;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
+}
 
-  &:hover {
-    color: var(--color-fg);
-    background: none;
-  }
+.iconButton:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 212, 255, 0.28);
+}
 
-  &.round {
-    width: 1.7rem;
-    height: 1.7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-bg);
-    background: var(--color-fg-soft);
-    border-radius: 100%;
+.round {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--text);
+  background: linear-gradient(
+    140deg,
+    rgba(108, 99, 255, 0.5),
+    rgba(108, 99, 255, 0.2)
+  );
+  border: 1px solid rgba(140, 133, 255, 0.35);
+  box-shadow: var(--shadow-inset);
 
-    &:hover {
-      color: var(--color-bg);
-      background: var(--color-fg);
-    }
-
-    svg {
-      width: auto;
-      height: 1.2rem;
-    }
+  svg {
+    width: auto;
+    height: 1.05rem;
   }
 }

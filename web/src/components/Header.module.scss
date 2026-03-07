@@ -1,58 +1,76 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 9999;
-  margin-block-start: calc(-1 * var(--main-padding));
-  padding-block-start: var(--main-padding);
-  padding-top: max(
-    env(safe-area-inset-top, var(--main-padding)),
-    var(--main-padding)
-  );
-  padding-bottom: var(--main-padding);
+  z-index: 50;
+  padding: 12px 16px;
+  padding-top: max(12px, env(safe-area-inset-top, 12px));
 }
 
 .menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  min-height: 56px;
+  border-radius: 18px;
+  border: 1px solid var(--surface-border);
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.03)
+  );
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  backdrop-filter: blur(20px);
+  padding: 8px 12px;
+}
 
-  h1 {
-    line-height: 1.5;
-    display: flex;
-    align-items: center;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.1rem;
+
+  svg {
+    fill: var(--primary);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.roomCode {
+  min-width: 92px;
+  text-align: center;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--accent);
+  padding: 10px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.qr {
+  min-height: 44px;
+  min-width: 44px;
+  border-radius: 12px;
+  color: var(--text);
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.45),
+    rgba(108, 99, 255, 0.18)
+  );
+  border: 1px solid rgba(125, 117, 255, 0.5);
+}
+
+@media (min-width: 960px) {
+  .header {
+    padding: 18px 20px 10px;
   }
 
-  .logo {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    font-size: 24px;
-    position: relative;
-    z-index: 500;
-
-    span {
-      margin-top: -2px;
-    }
-
-    svg {
-      fill: var(--color-accent);
-      height: 24px;
-      width: auto;
-      margin-inline-end: 6px;
-    }
-  }
-
-  .right {
-    font-size: 0;
-
-    a {
-      margin-inline-start: 10px;
-
-      svg {
-        height: 1.4rem;
-        width: auto;
-      }
-    }
+  .menu {
+    min-height: 62px;
+    padding: 8px 14px;
   }
 }

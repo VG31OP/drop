@@ -2,82 +2,93 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
 
-  &:not(:last-child) {
-    margin-inline-end: 10px;
-  }
+.wrapper:not(:last-child) {
+  margin-inline-end: 12px;
+}
+
+.wrapper::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 0 rgba(40, 209, 124, 0.7);
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  animation: pulse-online 1.7s infinite;
 }
 
 .tile {
   margin: 0;
+  cursor: pointer;
   position: relative;
-
-  input {
-    position: absolute;
-    inset: 0;
-    display: block;
-    background: transparent;
-    opacity: 0.01;
-    cursor: pointer;
-    font-size: 0;
-  }
+  border-radius: 999px;
+  border: 2px dashed rgba(0, 212, 255, 0.55);
+  box-shadow: var(--glow);
+  animation: pulseGlow 2.4s ease-in-out infinite;
 }
 
-.tile {
+.tile input {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background: transparent;
+  opacity: 0.01;
   cursor: pointer;
+  font-size: 0;
+  border-radius: inherit;
+}
 
-  label {
-    cursor: pointer;
-    position: absolute;
-    opacity: 0.01;
-  }
+.tile .icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 0;
+  pointer-events: none;
+}
 
-  .icon {
-    font-size: 0;
+.tile .icon svg {
+  transition: 0.2s ease-in-out color;
+  color: rgba(255, 255, 255, 0.9);
+  height: 32px;
+  width: auto;
+}
 
-    svg {
-      transition: 0.1s ease-in-out color;
-      color: rgba(0, 0, 0, 0.25);
-      height: 30px;
-      width: auto;
-    }
+.tile .icon .plus {
+  height: 44px;
+}
 
-    .plus {
-      height: 50px;
-    }
-  }
-
-  &.active,
-  &:hover,
-  &:focus-within {
-    svg {
-      color: rgba(0, 0, 0, 0.5);
-    }
-  }
-
-  &.everyone {
-    .icon {
-      svg {
-        color: rgba(255, 255, 255, 0.5);
-      }
-    }
-
-    &.active,
-    &:hover,
-    &:focus-within {
-      svg {
-        color: rgba(255, 255, 255, 1);
-      }
-    }
-  }
+.tile.active svg,
+.tile:hover svg,
+.tile:focus-within svg {
+  color: var(--accent);
 }
 
 .name {
   pointer-events: none;
   text-align: center;
-  width: 75px;
-  font-size: 0.8rem;
-  margin-block-start: 10px;
-  color: var(--color-fg);
+  width: 120px;
+  font-size: 0.82rem;
+  margin-top: 10px;
+  color: var(--text);
   word-break: break-word;
+}
+
+@keyframes pulse-online {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 209, 124, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(40, 209, 124, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 209, 124, 0);
+  }
 }

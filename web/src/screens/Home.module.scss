@@ -1,15 +1,43 @@
 .home {
-  margin-block-start: 15px;
-  padding: 15px;
-  padding-block-start: 0;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 16px 82px;
+}
+
+.sidebar {
+  display: none;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panel {
+  height: 100%;
   overflow: auto;
+  padding: 6px 2px 8px;
+}
+
+.sectionHeader {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 2px 0 10px;
+  color: var(--text);
+}
+
+.hidden {
+  display: none;
 }
 
 .disconnected {
-  margin: 15px;
+  margin: 16px;
 
   div > div {
-    margin-block-start: 1rem;
+    margin-top: 1rem;
   }
 
   span {
@@ -17,16 +45,70 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .home {
-    display: grid;
-    grid-gap: 15px;
-    grid-template-columns: 1fr 50%;
-  }
+.navItem {
+  min-height: 44px;
+  border-radius: 14px;
 }
 
-@media screen and (min-width: 1200px) {
+@media (min-width: 960px) {
   .home {
-    grid-template-columns: 1fr 33.3%;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    padding: 0 20px 12px;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--surface-border);
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    );
+    box-shadow: var(--shadow-soft), var(--shadow-inset);
+    backdrop-filter: blur(20px);
+    height: fit-content;
+    position: sticky;
+    top: 0;
+  }
+
+  .navItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    color: var(--muted);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    text-align: left;
+    font-weight: 500;
+    transition: 0.2s ease;
+
+    svg {
+      font-size: 1.1rem;
+    }
+  }
+
+  .navItem:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+  }
+
+  .active {
+    color: #fff;
+    background: linear-gradient(
+      140deg,
+      rgba(108, 99, 255, 0.5),
+      rgba(0, 212, 255, 0.2)
+    );
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: var(--glow);
   }
 }

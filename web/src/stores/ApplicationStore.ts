@@ -12,7 +12,7 @@ export class ApplicationStore {
   noticeUrl?: string = undefined;
   appName = defaultAppName;
   abuseEmail?: string = undefined;
-  tab = 'transfers';
+  tab = 'files';
   modal?: string = undefined;
   showPaste = false;
 

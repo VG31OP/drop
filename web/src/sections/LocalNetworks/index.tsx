@@ -22,7 +22,7 @@ export const LocalNetworks: React.FC = observer(() => {
           className={styles.network}
           onClick={() => {
             applicationStore.closeModal();
-            applicationStore.setTab('transfers');
+            applicationStore.setTab('files');
           }}
         >
           <span>{network.name}</span>

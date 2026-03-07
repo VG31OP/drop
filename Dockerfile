@@ -7,7 +7,11 @@ ARG VERSION
 
 ARG VITE_APP_NAME
 
-LABEL build_version="filedrop version: ${VERSION}, Build Date: ${BUILD_DATE}"
+LABEL org.opencontainers.image.title="FileDrop" \
+  org.opencontainers.image.authors="Vraj Shiroya <vraj@shiroya.in>" \
+  org.opencontainers.image.url="https://drop.shiroya.in" \
+  org.opencontainers.image.source="https://github.com/VG31OP/drop" \
+  build_version="FileDrop version: ${VERSION}, Build Date: ${BUILD_DATE}"
 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH

@@ -91,6 +91,8 @@
     "failed": "Failed :("
   },
   "tabs": {
+    "files": "Files",
+    "devices": "Add Devices",
     "transfers": "Transfers",
     "connect": "Connect",
     "chat": "Chat",

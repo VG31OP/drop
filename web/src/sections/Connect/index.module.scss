@@ -1,69 +1,59 @@
 .connect {
   text-align: center;
-
-  .info {
-    display: block;
-  }
-
-  & > *:not(:last-child) {
-    margin-block-end: 20px;
-  }
-
-  .copy {
-    background-color: #35353b;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 15px;
-
-    .buttons {
-      display: flex;
-      align-items: center;
-      margin-inline-start: 10px;
-    }
-
-    pre {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      border-radius: 5px;
-      user-select: text;
-      -webkit-user-select: text;
-    }
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      flex: 1;
-
-      &:not(:last-child) {
-        margin-inline-end: 10px;
-      }
-    }
-  }
-
-  .qrcode {
-    font-size: 0;
-
-    svg {
-      box-sizing: content-box;
-      border: 10px solid white;
-      border-radius: 5px;
-    }
-  }
 }
 
-.other {
-  & > span {
-    color: var(--color-fg-soft);
-  }
+.connect > *:not(:last-child) {
+  margin-bottom: 18px;
+}
 
-  & > div {
-    grid-template-columns: 1fr 1fr !important;
-  }
+.info {
+  color: var(--muted);
+}
+
+.copy {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  gap: 8px;
+}
+
+.copy pre {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  border-radius: 10px;
+  user-select: text;
+  -webkit-user-select: text;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.qrcode {
+  font-size: 0;
+}
+
+.qrcode svg {
+  box-sizing: content-box;
+  border: 10px solid rgba(255, 255, 255, 0.94);
+  border-radius: 14px;
+}
+
+.other > span {
+  color: var(--muted);
+}
+
+.other > div {
+  grid-template-columns: 1fr 1fr !important;
 }

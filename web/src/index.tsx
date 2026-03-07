@@ -5,6 +5,7 @@ import { pwanow, splash } from 'pwanow';
 import { Loading } from './components/Loading.js';
 import { App } from './App.js';
 import './i18n.js';
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -30,6 +31,6 @@ document.addEventListener(
 );
 
 pwanow({
-  backgroundColor: '#1b1b1d',
+  backgroundColor: '#0a0a0f',
   iconUrl: '/drop.svg',
 }).use(splash);

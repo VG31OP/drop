@@ -1,32 +1,30 @@
 :root {
-  --dark-gradient: linear-gradient(135deg, #00000000 0%, #00000044 100%);
-  --color-accent: #ff6f06;
-  --color-bg-transparent: #1b1b1d00;
-  --color-bg: #1b1b1d;
-  --color-bg-soft: #252529;
-  --color-primary: #35353b;
-  --color-primary-soft: #575760;
-  --color-fg-dark: #000000;
-  --color-fg-soft: #aaaaaa;
-  --color-fg: #ffffff;
-  --green: #3ea74e;
-  --green-soft: #3ea74ecc;
-  --red: #ff5c5c;
-  --red-soft: #ff5c5ccc;
-  --error: #ff4a4a;
-  --warning: #ffff5e;
-  --ok: #5bff5b;
+  --dark-gradient: linear-gradient(135deg, #02122500 0%, #02122566 100%);
+  --color-accent: #28d8ff;
+  --color-bg-transparent: #04142800;
+  --color-bg: #041428;
+  --color-bg-soft: rgba(16, 46, 83, 0.65);
+  --color-primary: rgba(18, 61, 110, 0.7);
+  --color-primary-soft: rgba(39, 97, 165, 0.85);
+  --color-fg-dark: #00111f;
+  --color-fg-soft: #9fbeda;
+  --color-fg: #ecf8ff;
+  --green: #31d0a1;
+  --green-soft: #31d0a1cc;
+  --red: #ff6f9a;
+  --red-soft: #ff6f9acc;
+  --error: #ff7d9f;
+  --warning: #ffd87b;
+  --ok: #51ffc9;
   --main-padding: 15px;
 }
 
-/* Firefox */
 * {
-  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0);
+  scrollbar-color: rgba(25, 116, 184, 0.5) rgba(0, 0, 0, 0);
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 16px;
+  width: 14px;
 }
 
 *::-webkit-scrollbar-track {
@@ -34,23 +32,24 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(39, 120, 189, 0.55);
   background-clip: content-box;
-  border: 5px solid transparent;
+  border: 4px solid transparent;
   border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 3px solid transparent;
+  background-color: rgba(62, 166, 255, 0.7);
 }
 
 body {
-  background: var(--color-bg);
+  background:
+    radial-gradient(circle at 8% 15%, rgba(25, 214, 255, 0.12), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(62, 130, 255, 0.25), transparent 32%),
+    linear-gradient(145deg, #020c1a 0%, #041428 45%, #08213f 100%);
   color: var(--color-fg);
   line-height: 1.4;
   user-select: none;
-
   overflow: hidden;
   position: fixed;
   inset: 0;
@@ -63,14 +62,13 @@ input,
 button,
 textarea,
 a {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 button {
-  transition: 0.1s ease-in-out all;
+  transition: 0.18s ease-in-out all;
   border: none;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
   font-size: 14px;
   text-shadow: none;
@@ -104,17 +102,18 @@ a {
 
 input {
   background: var(--color-primary);
-  border: none;
+  border: 1px solid rgba(79, 184, 255, 0.24);
   color: var(--color-fg);
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
 }
 
 h1,
 h2,
 h3,
 .subsection {
-  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.75);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 h1 {
@@ -124,7 +123,7 @@ h1 {
 h2,
 h3 {
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin: 0;
 }
 
@@ -137,23 +136,27 @@ h3 {
 }
 
 .subsection {
-  background: var(--color-bg-soft);
-  padding: 15px;
+  background: linear-gradient(
+    145deg,
+    rgba(22, 60, 108, 0.5) 0%,
+    rgba(13, 36, 67, 0.72) 100%
+  );
+  border: 1px solid rgba(97, 186, 255, 0.2);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  padding: 18px;
   position: relative;
-  border-radius: 5px;
+  border-radius: 18px;
 
   &:not(:first-child) {
     margin-block-start: 15px;
   }
 }
 
-/* Animations */
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
@@ -163,7 +166,6 @@ h3 {
   0% {
     opacity: 1;
   }
-
   100% {
     opacity: 0;
   }

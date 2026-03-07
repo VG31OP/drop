@@ -18,14 +18,14 @@
   }
 
   &.insecure {
-    color: var(--warning);
+    color: #ffc84a;
   }
 
   &.secure {
-    color: var(--ok);
+    color: var(--success);
 
     svg {
-      fill: var(--green);
+      fill: var(--success);
     }
   }
 }

@@ -34,7 +34,7 @@ export const YourTileSection: React.FC = observer(() => {
               <IoQrCode />
             </IconButton>
             <IconButton
-              onClick={() => applicationStore.openModal('settings')}
+              onClick={() => applicationStore.setTab('settings')}
               title={t('tabs.settings')}
             >
               <IoSettings />

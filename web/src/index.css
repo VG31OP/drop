@@ -1,0 +1,161 @@
+:root {
+  --bg: #0a0a0f;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --surface-border: rgba(255, 255, 255, 0.12);
+  --primary: #6c63ff;
+  --accent: #00d4ff;
+  --text: #f4f4ff;
+  --muted: #b1b2d1;
+  --success: #28d17c;
+  --danger: #ff5f7d;
+  --warning: #ffc84a;
+  --main-padding: 16px;
+  --radius: 18px;
+  --shadow-soft: 10px 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-inset: inset 1px 1px 0 rgba(255, 255, 255, 0.08),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.4);
+  --glow: 0 0 0 1px rgba(108, 99, 255, 0.35), 0 0 22px rgba(0, 212, 255, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-color: rgba(108, 99, 255, 0.55) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.45);
+  border-radius: 20px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(circle at 14% 12%, rgba(108, 99, 255, 0.18), transparent 26%),
+    radial-gradient(circle at 85% 14%, rgba(0, 212, 255, 0.14), transparent 28%),
+    radial-gradient(circle at 50% 85%, rgba(108, 99, 255, 0.12), transparent 42%),
+    var(--bg);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+input,
+button,
+textarea,
+select,
+a {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.mobileHidden {
+  display: none !important;
+}
+
+.desktopHidden {
+  display: block !important;
+}
+
+.mobileFlex {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.subsection {
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-soft), var(--shadow-inset);
+  padding: 18px;
+}
+
+.appRoot {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.appContent {
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.glassButton {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: linear-gradient(
+    140deg,
+    rgba(108, 99, 255, 0.35),
+    rgba(108, 99, 255, 0.2)
+  );
+  border: 1px solid rgba(149, 142, 255, 0.5);
+  box-shadow: var(--glow);
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.55);
+  }
+
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 16px rgba(0, 212, 255, 0);
+  }
+}
+
+@media (min-width: 960px) {
+  .mobileHidden {
+    display: block !important;
+  }
+
+  .desktopHidden {
+    display: none !important;
+  }
+}

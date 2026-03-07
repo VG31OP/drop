@@ -1,53 +1,64 @@
 .tile {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 20px;
-  background-image: var(--dark-gradient);
-  border-radius: 5px;
-
+  font-size: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
   position: relative;
   overflow: hidden;
   text-shadow: none;
+  color: #fff;
+  box-shadow: var(--shadow-inset);
+}
 
-  &.everyone {
-    background: var(--color-bg);
-    color: rgba(255, 255, 255, 0.5);
-  }
+.avatar {
+  font-size: 0.9em;
+  opacity: 0.88;
+  z-index: 1;
+}
 
-  svg {
-    font-size: 16px;
-  }
+.everyone {
+  background: linear-gradient(
+    145deg,
+    rgba(108, 99, 255, 0.55),
+    rgba(0, 212, 255, 0.35)
+  ) !important;
+}
 
-  .icons {
-    position: absolute;
-    bottom: 2px;
-    font-size: 0;
-    inset-inline: 0;
-    display: flex;
-    justify-content: center;
+.tile svg {
+  font-size: 16px;
+}
 
-    svg {
-      font-size: 16px;
-      fill: rgba(0, 0, 0, 0.15);
-      margin-inline: 2px;
-    }
-  }
+.icons {
+  position: absolute;
+  bottom: 4px;
+  inset-inline: 0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
 
-  &.small {
-    width: 20px;
-    height: 20px;
-  }
+.icons svg {
+  font-size: 12px;
+  fill: rgba(255, 255, 255, 0.7);
+}
 
-  &.medium {
-    width: 40px;
-    height: 40px;
-  }
+.small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 
-  &.big {
-    width: 75px;
-    height: 75px;
-  }
+.medium {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+
+.big {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }

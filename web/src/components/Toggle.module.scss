@@ -1,27 +1,18 @@
-$toggle-indicator-size: 16px; // changing this number will resize the whole toggle
-$track-height: $toggle-indicator-size + 6;
-$track-width: $toggle-indicator-size * 2.5;
-$highContrastModeSupport: solid 2px transparent;
-
-$indicator: var(--color-fg);
-$track-background: var(--color-primary-soft);
-$track-background-checked: var(--green);
-
+$toggle-indicator-size: 18px;
+$track-height: $toggle-indicator-size + 8;
+$track-width: $toggle-indicator-size * 2.4;
 $speed: 0.2s;
 
-// Toggle specific styles
 .toggle {
   align-items: center;
-  border-radius: 100px;
   display: flex;
-  margin-block-end: 8px;
-
-  &:last-of-type {
-    margin: 0;
-  }
+  margin-bottom: 10px;
 }
 
-// Since we can't style the checkbox directly, we "hide" it so we can draw the toggle.
+.toggle:last-of-type {
+  margin-bottom: 0;
+}
+
 .input {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -30,17 +21,12 @@ $speed: 0.2s;
   position: absolute;
   white-space: nowrap;
   width: 1px;
-
-  &:disabled + .track {
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
 }
 
 .track {
-  background: $track-background;
-  border: 1px solid transparent;
-  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
   cursor: pointer;
   display: flex;
   height: $track-height;
@@ -52,46 +38,42 @@ $speed: 0.2s;
 }
 
 .indicator {
-  align-items: center;
-  background: $indicator;
-  border-radius: $toggle-indicator-size;
-  bottom: 2px;
-  display: flex;
+  background: #fff;
+  border-radius: 999px;
+  bottom: 3px;
   height: $toggle-indicator-size;
-  justify-content: center;
-  left: 2px;
-  outline: $highContrastModeSupport;
+  left: 3px;
   position: absolute;
   transition: $speed;
   width: $toggle-indicator-size;
+  display: grid;
+  place-items: center;
 }
 
 .checkmark {
-  fill: var(--color-bg);
-  height: $toggle-indicator-size - 4;
-  width: $toggle-indicator-size - 4;
+  fill: #0a0a0f;
+  width: 12px;
+  height: 12px;
   opacity: 0;
   transition: opacity $speed ease-in-out;
 }
 
 .input:checked + .track {
-  background: $track-background-checked;
+  background: linear-gradient(140deg, rgba(108, 99, 255, 0.9), rgba(0, 212, 255, 0.65));
+  border-color: rgba(0, 212, 255, 0.3);
 
   .indicator {
-    background: $indicator;
     transform: translateX($track-width - $track-height);
+  }
 
-    .checkmark {
-      opacity: 1;
-      font-size: 0;
-      transition: opacity $speed ease-in-out;
-    }
+  .checkmark {
+    opacity: 1;
   }
 }
 
 .label {
   font-size: 0.9rem;
-  color: var(--color-fg-soft);
+  color: var(--muted);
 }
 
 [dir='rtl'] {
