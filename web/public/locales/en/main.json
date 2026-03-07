@@ -1,0 +1,117 @@
+{
+  "sections": {
+    "privacy": "Privacy policy",
+    "terms": "Terms of service",
+    "abuse": "Report abuse / DMCA",
+    "tech": "Technical information",
+    "github": "Source code",
+    "twitter": "Follow me on Twitter",
+    "about": "About"
+  },
+  "incompatibleBrowser": {
+    "title": "Incompatible browser",
+    "body": "Your browser does not support the technologies required for the app to work. You can still try to use the app, but it's not guaranteed it'll work."
+  },
+  "emptyNetwork": {
+    "title": "Nobody is connected to your network.",
+    "body": "Open this website elsewhere to connect.",
+    "qr": "QR code",
+    "local": "Local networks are available:"
+  },
+  "tile": "Click on this area to start a transfer.",
+  "state": {
+    "connecting": "Connecting...",
+    "loading": "Loading..."
+  },
+  "clipboard": {
+    "title": "Send clipboard contents",
+    "body": "Sending: {{fileNames}}"
+  },
+  "chat": {
+    "showMore": "Show more",
+    "message": "Message {{target}}",
+    "everyone": "everyone"
+  },
+  "emptyChat": {
+    "title": "It's empty in here.",
+    "body": "Start chatting with others in your room.",
+    "bodyTarget": "Start chatting with {{target}}."
+  },
+  "connect": "Open this page on your other device to copy files:",
+  "localNetworks": "Local networks:",
+  "you": "You",
+  "edit": "Edit",
+  "send": "Send",
+  "share": "Share",
+  "cancelAll": "Cancel all",
+  "acceptAll": "Accept all",
+  "cancel": "Cancel",
+  "accept": "Accept",
+  "download": "Download",
+  "copy": "Copy",
+  "copied": "Copied to clipboard!",
+  "paste": "Paste",
+  "save": "Save",
+  "settings": {
+    "autoAccept": "Accept all incoming transfers",
+    "autoDownload": "Download all complete transfers",
+    "displayIcons": "Display client status icons"
+  },
+  "transfers": {
+    "title": {
+      "incoming": "Incoming",
+      "outgoing": "Outgoing",
+      "active": "Active",
+      "complete": "Complete"
+    },
+    "icon": {
+      "state": "Transfer state: {{state}}",
+      "preview": "Preview: {{fileName}}"
+    },
+    "progress": "{{offset}} of {{size}}",
+    "elapsed": "{{time}} elapsed",
+    "left": "{{time}} left"
+  },
+  "fileType": {
+    "unknown": "",
+    "text": "Text file",
+    "archive": "Archive",
+    "image": "Image",
+    "video": "Video",
+    "audio": "Audio",
+    "binary": "Binary file"
+  },
+  "transferState": {
+    "incoming": "Incoming",
+    "outgoing": "Outgoing",
+    "connecting": "Connecting...",
+    "connected": "Connected",
+    "inProgress": "In progress...",
+    "complete": "Complete",
+    "failed": "Failed :("
+  },
+  "tabs": {
+    "transfers": "Transfers",
+    "connect": "Connect",
+    "chat": "Chat",
+    "settings": "Settings"
+  },
+  "yourName": "Your name",
+  "desktopHint": "Press Ctrl+V to send your clipboard contents.",
+  "sendFromClipboard": "Send from clipboard",
+  "disconnected": {
+    "title": "You have been disconnected.",
+    "reason": "Reason:",
+    "reasons": {
+      "cryptoRequired": "This instance requires WebCrypto. Possible reasons for failure: your connection is not over HTTPS or your web browser does not support WebCrypto.",
+      "notSpecified": "Not specified."
+    }
+  },
+  "error": {
+    "network": {
+      "networkFull": "The network you have selected is full, please select a different network."
+    }
+  },
+  "secure": "This instance ensures all data (file metadata, previews, chat) is encrypted between peers.",
+  "insecure": "This instance allows for unencrypted data exchange. The owners of this instance may see the data (file metadata, previews, chat) sent between peers. File transfers are still encrypted."
+}

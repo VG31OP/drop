@@ -1,0 +1,31 @@
+.secureStatus {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-inline-start: 0.5rem;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    margin-inline-end: 5px;
+    font-size: 1rem;
+    height: auto;
+    width: 1.5rem;
+  }
+
+  &.insecure {
+    color: var(--warning);
+  }
+
+  &.secure {
+    color: var(--ok);
+
+    svg {
+      fill: var(--green);
+    }
+  }
+}

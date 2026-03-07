@@ -1,0 +1,31 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+# production
+build
+dist
+
+# misc
+.DS_Store
+*.log*
+
+# config
+*.local
+.config.json
+
+# database
+*.db
+*.db-journal
+.eslintcache
+compose.yaml
+
+.pnp.cjs
+.pnp.loader.mjs
+.yarn

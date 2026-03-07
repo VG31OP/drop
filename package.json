@@ -1,0 +1,42 @@
+{
+  "name": "filedrop",
+  "private": true,
+  "workspaces": [
+    "web",
+    "ws",
+    "types"
+  ],
+  "scripts": {
+    "prepare": "corepack yarn workspace types run build",
+    "start": "cross-env WS_USE_PROXY=1 corepack yarn workspaces foreach -Aipt run start",
+    "build": "corepack yarn workspaces foreach -Aipt run build",
+    "start:prod": "corepack yarn workspace @filedrop/ws run start:prod",
+    "test": "vitest",
+    "lint": "corepack yarn workspaces foreach -Aipt run lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "__tests__/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.46.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "^2.8.4",
+    "typescript": "^5.2.2",
+    "vitest": "^0.33.0"
+  },
+  "packageManager": "yarn@4.0.0"
+}

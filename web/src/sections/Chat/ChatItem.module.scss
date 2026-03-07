@@ -1,0 +1,51 @@
+.info {
+  display: flex;
+  align-items: center;
+  color: var(--color-fg-soft);
+  margin-block-end: 5px;
+
+  & > * {
+    margin-inline-end: 10px;
+  }
+}
+
+.message {
+  position: relative;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 50px;
+  overflow: hidden;
+  user-select: text;
+
+  a {
+    display: inline;
+    white-space: unset;
+    font-weight: bold;
+  }
+}
+
+.more {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  color: var(--color-fg);
+  padding: 10px 0;
+
+  &:hover {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
+.expanded .message {
+  max-height: unset;
+}

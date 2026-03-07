@@ -1,0 +1,37 @@
+.actions {
+  font-size: 0;
+  display: flex;
+  align-items: center;
+
+  button,
+  a {
+    margin-inline-start: 0.5rem;
+    font-size: 0;
+
+    svg {
+      font-size: 2rem;
+    }
+
+    &.copy {
+      svg {
+        height: 1.1rem;
+      }
+    }
+
+    &.positive {
+      background-color: var(--green-soft);
+
+      &:hover {
+        background-color: var(--green);
+      }
+    }
+
+    &.negative {
+      background-color: var(--red-soft);
+
+      &:hover {
+        background-color: var(--red);
+      }
+    }
+  }
+}

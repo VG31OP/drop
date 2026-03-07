@@ -1,0 +1,15 @@
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  button,
+  a {
+    margin-inline-start: 0.5rem;
+    font-size: 0;
+
+    svg {
+      font-size: 2rem;
+    }
+  }
+}

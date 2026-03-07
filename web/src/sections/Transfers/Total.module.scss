@@ -1,0 +1,11 @@
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-block-start: -10px;
+
+  span:not(:last-child) {
+    margin-inline-end: 0.5rem;
+  }
+}

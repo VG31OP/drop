@@ -1,0 +1,53 @@
+.tile {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  background-image: var(--dark-gradient);
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  text-shadow: none;
+
+  &.everyone {
+    background: var(--color-bg);
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  svg {
+    font-size: 16px;
+  }
+
+  .icons {
+    position: absolute;
+    bottom: 2px;
+    font-size: 0;
+    inset-inline: 0;
+    display: flex;
+    justify-content: center;
+
+    svg {
+      font-size: 16px;
+      fill: rgba(0, 0, 0, 0.15);
+      margin-inline: 2px;
+    }
+  }
+
+  &.small {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.medium {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.big {
+    width: 75px;
+    height: 75px;
+  }
+}
