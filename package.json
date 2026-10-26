@@ -13,8 +13,8 @@
     "types"
   ],
   "scripts": {
-    "prepare": "corepack yarn workspace types run build",
-    "start": "cross-env WS_USE_PROXY=1 corepack yarn workspaces foreach -Aipt run start",
+    "prepare": "corepack yarn workspace @filedrop/types run build",
+    "start": "cross-env WS_USE_PROXY=1 WS_HOST=0.0.0.0 corepack yarn workspaces foreach -Aipt run start",
     "build": "corepack yarn workspaces foreach -Aipt run build",
     "start:prod": "corepack yarn workspace @filedrop/ws run start:prod",
     "test": "vitest",
@@ -37,6 +37,7 @@
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.46.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",

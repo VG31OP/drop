@@ -18,15 +18,17 @@ import {
 } from 'react-icons/io5';
 
 import styles from './Home.module.scss';
-import { applicationStore, connection, networkStore } from '../stores/index.js';
+import { applicationStore, chatStore, connection, networkStore } from '../stores/index.js';
 import { Footer } from '../components/Footer.js';
 import { Modal } from '../components/Modal.js';
+import { NotificationCount } from '../components/NotificationCount.js';
 import { ClipboardModal } from '../modals/ClipboardModal.js';
 import { IncompatibleBrowserSection } from '../sections/IncompatibleBrowser/index.js';
 import { YourTileSection } from '../sections/YourTile/index.js';
 import { NoticeSection } from '../sections/Notice/index.js';
 import { NetworkSection } from '../sections/Network/index.js';
 import { TransfersSection } from '../sections/Transfers/index.js';
+import { PublicRoomsSection } from '../sections/PublicRooms/index.js';
 import { ChatSection } from '../sections/Chat/index.js';
 import { MobileTabs } from '../sections/MobileTabs/index.js';
 import { SettingsSection } from '../sections/Settings/index.js';
@@ -111,11 +113,13 @@ export const Home: React.FC = observer(() => {
   const modal = applicationStore.modal;
 
   const onTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    if (!e.changedTouches || !e.changedTouches[0]) return;
     touchStartX.current = e.changedTouches[0].clientX;
     touchStartY.current = e.changedTouches[0].clientY;
   };
 
   const onTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (!e.changedTouches || !e.changedTouches[0]) return;
     const dx = e.changedTouches[0].clientX - touchStartX.current;
     const dy = e.changedTouches[0].clientY - touchStartY.current;
     if (Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy)) return;
@@ -126,6 +130,8 @@ export const Home: React.FC = observer(() => {
     if (dx < 0 && index < tabs.length - 1) applicationStore.setTab(tabs[index + 1]);
     if (dx > 0 && index > 0) applicationStore.setTab(tabs[index - 1]);
   };
+
+  const currentDeviceName = networkStore.currentClient?.clientName || 'Your Device';
 
   return (
     <>
@@ -141,51 +147,77 @@ export const Home: React.FC = observer(() => {
         <ConnectSection />
       </Modal>
       <div
-        className={clsx('mobileFlex', styles.home)}
+        className={styles.home}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
         <aside className={styles.sidebar}>
-          <button
-            className={clsx(styles.navItem, { [styles.active]: tab === 'files' })}
-            onClick={() => applicationStore.setTab('files')}
-          >
-            <IoCloudUpload />
-            <span>Files</span>
-          </button>
-          <button
-            className={clsx(styles.navItem, { [styles.active]: tab === 'devices' })}
+          <div className={styles.sidebarNav}>
+            <button
+              className={clsx(styles.navItem, { [styles.active]: tab === 'files' })}
+              onClick={() => applicationStore.setTab('files')}
+              aria-label={t('tabs.files')}
+            >
+              <div className={styles.navIcon}>
+                <NotificationCount count={networkStore.incomingTransfers.length} />
+                <IoCloudUpload />
+              </div>
+              <span>{t('tabs.files')}</span>
+            </button>
+            <button
+              className={clsx(styles.navItem, { [styles.active]: tab === 'devices' })}
+              onClick={() => applicationStore.setTab('devices')}
+              aria-label={t('tabs.devices')}
+              title={t('tabs.devices')}
+            >
+              <div className={styles.navIcon}>
+                <IoPhonePortrait />
+              </div>
+              <span>{t('tabs.devices')}</span>
+            </button>
+            <button
+              className={clsx(styles.navItem, { [styles.active]: tab === 'chat' })}
+              onClick={() => applicationStore.setTab('chat')}
+              aria-label={t('tabs.chat')}
+            >
+              <div className={styles.navIcon}>
+                <NotificationCount count={chatStore.unread} />
+                <IoChatbubbles />
+              </div>
+              <span>{t('tabs.chat')}</span>
+            </button>
+            <button
+              className={clsx(styles.navItem, { [styles.active]: tab === 'settings' })}
+              onClick={() => applicationStore.setTab('settings')}
+              aria-label={t('tabs.settings')}
+            >
+              <div className={styles.navIcon}>
+                <IoSettings />
+              </div>
+              <span>{t('tabs.settings')}</span>
+            </button>
+          </div>
+
+          <div
+            className={styles.sidebarFooter}
             onClick={() => applicationStore.setTab('devices')}
-            aria-label="Add Devices"
-            title="Add Devices"
+            title="Your device info"
           >
-            <IoPhonePortrait />
-            <span>Add Devices</span>
-          </button>
-          <button
-            className={clsx(styles.navItem, { [styles.active]: tab === 'chat' })}
-            onClick={() => applicationStore.setTab('chat')}
-          >
-            <IoChatbubbles />
-            <span>Chat</span>
-          </button>
-          <button
-            className={clsx(styles.navItem, { [styles.active]: tab === 'settings' })}
-            onClick={() => applicationStore.setTab('settings')}
-          >
-            <IoSettings />
-            <span>Settings</span>
-          </button>
+            <span className={styles.sidebarOnlineDot} />
+            <span className={styles.sidebarDeviceName}>{currentDeviceName}</span>
+          </div>
         </aside>
+
         <div className={styles.body}>
           <div className={clsx(styles.panel, { [styles.hidden]: tab !== 'files' })}>
             <IncompatibleBrowserSection />
             <NoticeSection />
             <NetworkSection />
             <TransfersSection />
+            <PublicRoomsSection />
           </div>
           <div className={clsx(styles.panel, { [styles.hidden]: tab !== 'devices' })}>
-            <div className={styles.sectionHeader}>Add Devices</div>
+            <div className={styles.sectionHeader}>{t('tabs.devices')}</div>
             <YourTileSection />
             <Suspense>
               <ConnectSection />

@@ -3,36 +3,52 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
-  border-radius: 12px;
-  color: var(--muted);
-  font-size: 1rem;
-  border: 1px solid transparent;
-  transition: 0.2s ease;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--dp-radius-control);
+  color: var(--dp-color-ink);
+  font-size: 1.2rem;
+  border: var(--dp-border-annotation) solid var(--dp-color-ink);
+  background: var(--dp-color-contrast);
+  box-shadow: 2px 2px 0px var(--dp-color-ink);
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
+  position: relative;
 }
 
 .iconButton:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(0, 212, 255, 0.28);
+  color: var(--dp-color-ink);
+  background: var(--dp-color-emphasis);
+  box-shadow: 4px 4px 0px var(--dp-color-ink);
+  transform: translate(-2px, -2px);
+}
+
+.iconButton:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px var(--dp-color-ink);
+}
+
+.iconButton:focus-visible {
+  outline: 3px solid var(--dp-color-ink);
+  outline-offset: 2px;
 }
 
 .round {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  color: var(--text);
-  background: linear-gradient(
-    140deg,
-    rgba(108, 99, 255, 0.5),
-    rgba(108, 99, 255, 0.2)
-  );
-  border: 1px solid rgba(140, 133, 255, 0.35);
-  box-shadow: var(--shadow-inset);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--dp-radius-control);
+  color: var(--dp-color-ink);
+  background: var(--dp-color-field);
+  border: var(--dp-border-divider) solid var(--dp-color-ink);
+  box-shadow: 3px 3px 0px var(--dp-color-ink);
 
   svg {
     width: auto;
-    height: 1.05rem;
+    height: 1.25rem;
+  }
+
+  &:hover {
+    background: var(--dp-color-emphasis);
+    box-shadow: 5px 5px 0px var(--dp-color-ink);
+    transform: translate(-2px, -2px);
   }
 }

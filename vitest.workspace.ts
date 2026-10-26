@@ -1,1 +1,1 @@
-export default ['ws'];
+export default ['ws', 'web'];

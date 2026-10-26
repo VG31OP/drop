@@ -1,34 +1,41 @@
 .item {
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 10px 12px;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-divider) solid var(--dp-color-ink);
+  background: #ffffff;
+  box-shadow: 3px 3px 0px var(--dp-color-ink);
+  padding: 12px 16px;
 }
 
 .info {
   display: flex;
   align-items: center;
-  color: var(--muted);
+  color: #000000;
+  font-family: var(--dp-typography-face);
+  font-weight: 800;
+  text-transform: uppercase;
   margin-bottom: 6px;
   gap: 8px;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
 }
 
 .message {
   position: relative;
   white-space: pre-wrap;
   word-wrap: break-word;
-  max-height: 56px;
+  max-height: 60px;
   overflow: hidden;
   user-select: text;
-  color: var(--text);
-  line-height: 1.45;
+  color: #000000;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .message a {
   display: inline;
   white-space: unset;
-  font-weight: 600;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .more {
@@ -36,10 +43,11 @@
   bottom: 0;
   inset-inline: 0;
   width: 100%;
-  background: linear-gradient(0deg, rgba(10, 10, 15, 0.92), rgba(10, 10, 15, 0));
-  color: var(--accent);
+  background: linear-gradient(0deg, #ffffff, rgba(255, 255, 255, 0));
+  color: var(--dp-color-signal);
+  font-weight: 800;
   padding: 12px 0 2px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-align: left;
 }
 

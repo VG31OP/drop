@@ -1,64 +1,93 @@
 .tile {
-  font-size: 16px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-family: var(--dp-typography-face);
+  font-size: 18px;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-divider) solid var(--dp-color-ink);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
+  font-weight: 900;
   position: relative;
   overflow: hidden;
-  text-shadow: none;
-  color: #fff;
-  box-shadow: var(--shadow-inset);
+  color: #000000;
+  box-shadow: 4px 4px 0px var(--dp-color-ink);
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
 }
 
 .avatar {
-  font-size: 0.9em;
-  opacity: 0.88;
+  font-size: 1.2em;
+  font-weight: 900;
   z-index: 1;
 }
 
 .everyone {
-  background: linear-gradient(
-    145deg,
-    rgba(108, 99, 255, 0.55),
-    rgba(0, 212, 255, 0.35)
-  ) !important;
+  background: var(--dp-color-emphasis) !important;
 }
 
 .tile svg {
   font-size: 16px;
 }
 
-.icons {
+.badges {
   position: absolute;
-  bottom: 4px;
+  bottom: 8px;
   inset-inline: 0;
   display: flex;
-  justify-content: center;
-  gap: 4px;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.icons svg {
-  font-size: 12px;
-  fill: rgba(255, 255, 255, 0.7);
+.localBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--dp-color-emphasis);
+  border: 1px solid #000000;
+  border-radius: 0;
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #000000;
+  box-shadow: 2px 2px 0px #000000;
+
+  svg {
+    font-size: 11px;
+    color: #000000;
+  }
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  svg {
+    font-size: 13px;
+    color: #000000;
+  }
 }
 
 .small {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
 }
 
 .medium {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  border-radius: 0;
 }
 
 .big {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 124px;
+  height: 124px;
+  border-radius: 0;
+  border-width: var(--dp-border-panel);
+  box-shadow: 5px 5px 0px var(--dp-color-ink);
 }

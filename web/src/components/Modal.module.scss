@@ -1,45 +1,76 @@
 .overlay {
-  background: rgba(2, 10, 22, 0.72);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  inset: 0;
   z-index: 10000;
-  padding: 30px;
-  backdrop-filter: blur(5px);
-  min-height: 100vh;
-
+  padding: 20px;
   display: flex;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .modal {
   min-width: 0;
   width: 100%;
-  max-width: 700px;
-  margin-block-start: 100px;
+  max-width: 600px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--dp-color-ground);
+  border: var(--dp-border-panel) solid var(--dp-color-ink);
+  box-shadow: 8px 8px 0px var(--dp-color-ink);
+  padding: 20px;
 }
 
 .title {
-  background: linear-gradient(
-    135deg,
-    rgba(23, 66, 116, 0.6) 0%,
-    rgba(13, 38, 69, 0.8) 100%
-  );
-  border: 1px solid rgba(97, 186, 255, 0.24);
-  padding: 15px;
+  background: var(--dp-color-emphasis);
+  border: var(--dp-border-divider) solid var(--dp-color-ink);
+  box-shadow: 4px 4px 0px var(--dp-color-ink);
+  padding: 12px 18px;
   position: relative;
-  border-radius: 14px;
-  margin-block-end: 1rem;
+  border-radius: var(--dp-radius-control);
+  margin-block-end: 16px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  h2 {
+    font-family: var(--dp-typography-face);
+    font-size: 1.25rem;
+    font-weight: var(--dp-typography-display-weight);
+    letter-spacing: var(--dp-typography-display-tracking);
+    text-transform: uppercase;
+    color: var(--dp-color-ink);
+  }
+
   button {
-    svg {
-      font-size: 2rem;
+    background: var(--dp-color-signal);
+    color: #ffffff;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 0;
+
+    &:hover {
+      background: #ff2914;
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px #000000;
     }
+
+    svg {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .overlay {
+    padding: 12px;
+  }
+
+  .modal {
+    padding: 14px;
+    box-shadow: 5px 5px 0px var(--dp-color-ink);
   }
 }

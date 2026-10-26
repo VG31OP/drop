@@ -1,6 +1,12 @@
 import React from 'react';
 import clsx from 'clsx';
-import { IoLockClosed, IoPhonePortrait, IoHome } from 'react-icons/io5';
+import {
+  IoLockClosed,
+  IoPhonePortraitOutline,
+  IoDesktopOutline,
+  IoTabletPortraitOutline,
+  IoWifiOutline,
+} from 'react-icons/io5';
 import { ClientModel, DeviceType } from '@filedrop/types';
 import { observer } from 'mobx-react-lite';
 
@@ -18,9 +24,20 @@ export const TargetTile = observer(
     ({ client, className, variant = 'small', children, ...props }, ref) => {
       const isSecure = connection.secure && !!client.publicKey;
       const isLocal = client.isLocal;
-      const isMobile = client.deviceType === DeviceType.MOBILE;
       const displayIcons = settingsStore.settings.displayIcons;
       const avatar = (client.clientName || '?')[0].toUpperCase();
+
+      const getDeviceIcon = () => {
+        switch (client.deviceType) {
+          case DeviceType.MOBILE:
+            return <IoPhonePortraitOutline className={styles.device} title="Mobile" />;
+          case DeviceType.TABLET:
+            return <IoTabletPortraitOutline className={styles.device} title="Tablet" />;
+          case DeviceType.DESKTOP:
+          default:
+            return <IoDesktopOutline className={styles.device} title="Desktop" />;
+        }
+      };
 
       return (
         <div
@@ -41,10 +58,16 @@ export const TargetTile = observer(
         >
           <span className={styles.avatar}>{avatar}</span>
           {variant === 'big' && displayIcons && (
-            <div className={styles.icons}>
-              {isSecure && <IoLockClosed className={styles.secure} />}
-              {isLocal && <IoHome className={styles.local} />}
-              {isMobile && <IoPhonePortrait className={styles.device} />}
+            <div className={styles.badges}>
+              {isLocal && (
+                <span className={styles.localBadge} title="Local Network">
+                  <IoWifiOutline /> LAN
+                </span>
+              )}
+              <div className={styles.icons}>
+                {isSecure && <IoLockClosed className={styles.secure} title="Encrypted" />}
+                {getDeviceIcon()}
+              </div>
             </div>
           )}
           {children}

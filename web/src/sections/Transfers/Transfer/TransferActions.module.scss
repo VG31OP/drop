@@ -8,6 +8,20 @@
 .actions button,
 .actions a {
   font-size: 0;
+  border-radius: var(--dp-radius-control) !important;
+  border: var(--dp-border-annotation) solid var(--dp-color-ink) !important;
+  box-shadow: 2px 2px 0px var(--dp-color-ink) !important;
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction) !important;
+
+  &:hover {
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 4px 4px 0px var(--dp-color-ink) !important;
+  }
+
+  &:active {
+    transform: translate(1px, 1px) !important;
+    box-shadow: 0px 0px 0px var(--dp-color-ink) !important;
+  }
 }
 
 .actions button svg,
@@ -20,11 +34,19 @@
 }
 
 .positive {
-  background: linear-gradient(145deg, rgba(40, 209, 124, 0.95), rgba(40, 209, 124, 0.7));
-  border-color: rgba(173, 255, 213, 0.35);
+  background: var(--dp-color-emphasis) !important;
+  color: #000000 !important;
+
+  &:hover {
+    background: #fff !important;
+  }
 }
 
 .negative {
-  background: linear-gradient(145deg, rgba(255, 95, 125, 0.95), rgba(255, 95, 125, 0.75));
-  border-color: rgba(255, 179, 193, 0.35);
+  background: var(--dp-color-signal) !important;
+  color: #ffffff !important;
+
+  &:hover {
+    background: #e62f1f !important;
+  }
 }

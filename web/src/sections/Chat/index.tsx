@@ -134,7 +134,7 @@ export const ChatSection: React.FC = observer(() => {
             <IoClipboard />
           </IconButton>
         )}
-        <IconButton title={t('send')}>
+        <IconButton title={t('send')} className={styles.sendButton}>
           <IoSend />
         </IconButton>
       </form>

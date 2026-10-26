@@ -1,41 +1,73 @@
 .tab {
-  background: transparent;
-  color: var(--muted);
+  background: #ffffff;
+  color: var(--dp-color-ink);
   flex: 1;
   min-height: 52px;
-  border-radius: 14px;
+  border-radius: var(--dp-radius-control);
   font-size: 0.75rem;
-  padding: 8px 6px;
-
+  padding: 6px 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 800;
   gap: 2px;
+  border: var(--dp-border-annotation) solid var(--dp-color-ink);
+  box-shadow: 2px 2px 0px var(--dp-color-ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
 
   span {
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   svg {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
 
   small {
-    font-size: 0.68rem;
+    font-family: var(--dp-typography-face);
+    font-size: 0.72rem;
     letter-spacing: 0.02em;
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  &.active,
   &:hover {
-    color: #fff;
-    background: linear-gradient(
-      145deg,
-      rgba(108, 99, 255, 0.45),
-      rgba(0, 212, 255, 0.18)
-    );
-    box-shadow: var(--glow);
+    background: var(--dp-color-field);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--dp-color-ink);
+  }
+
+  &.active {
+    background: var(--dp-color-emphasis);
+    border-width: var(--dp-border-divider);
+    box-shadow: 3px 3px 0px var(--dp-color-ink);
+    transform: translate(-1px, -1px);
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--dp-color-ink);
+  }
+
+  @media (max-width: 360px) {
+    min-height: 48px;
+    padding: 4px 2px;
+
+    svg {
+      font-size: 1.15rem;
+    }
+
+    small {
+      font-size: 0.65rem;
+    }
   }
 }

@@ -1,20 +1,28 @@
 .tabs {
   position: fixed;
-  inset-inline: 10px;
-  bottom: max(8px, env(safe-area-inset-bottom, 8px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 20px);
+  max-width: 540px;
+  bottom: max(12px, env(safe-area-inset-bottom, 12px));
   display: flex;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 18px;
-  border: 1px solid var(--surface-border);
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.04)
-  );
-  box-shadow: var(--shadow-soft), var(--shadow-inset);
-  backdrop-filter: blur(20px);
+  gap: 6px;
+  padding: 6px;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-panel) solid var(--dp-color-ink);
+  background: var(--dp-color-ground);
+  box-shadow: 5px 5px 0px var(--dp-color-ink);
   z-index: 60;
+  touch-action: manipulation;
+}
+
+@media (max-width: 360px) {
+  .tabs {
+    width: calc(100% - 12px);
+    gap: 4px;
+    padding: 4px;
+    box-shadow: 4px 4px 0px var(--dp-color-ink);
+  }
 }
 
 @media (min-width: 960px) {

@@ -88,7 +88,6 @@ export class ClientManager {
         rtcConfiguration: rtcConfiguration(client.clientId),
       };
       client.send(clientInfoMessage);
-      this.sendPublicRoomsMessage();
 
       return;
     }
@@ -99,9 +98,12 @@ export class ClientManager {
 
     if (isNetworkNameMessageModel(message)) {
       const name = message.networkName.toUpperCase();
-      const count = this.getNetworkClients(name).length;
+      const currentNetworkClients = this.getNetworkClients(name);
+      const isAlreadyInNetwork = currentNetworkClients.some(
+        c => c.clientId === client.clientId
+      );
 
-      if (count >= maxNetworkClients) {
+      if (!isAlreadyInNetwork && currentNetworkClients.length >= maxNetworkClients) {
         this.sendError(client, 'network', 'networkFull');
         return;
       }
@@ -133,7 +135,7 @@ export class ClientManager {
       isTransferMessageModel(message) ||
       isChatMessageModel(message)
     ) {
-      this.sendMessage(client.clientId, message);
+      this.sendMessage(client, message);
     }
   }
 
@@ -156,18 +158,23 @@ export class ClientManager {
     client.send(message);
   }
 
-  sendMessage(fromClientId: string, message: TargetedMessageModel) {
-    if (!message.targetId || message.targetId === fromClientId) {
+  sendMessage(client: Client, message: TargetedMessageModel) {
+    if (
+      !message.targetId ||
+      !client.clientId ||
+      message.targetId === client.clientId ||
+      !client.networkName
+    ) {
       return;
     }
 
     const data = {
       ...message,
-      clientId: fromClientId,
+      clientId: client.clientId,
     };
 
     const targets = [...this.clients].filter(
-      c => c.clientId === message.targetId
+      c => c.clientId === message.targetId && c.networkName === client.networkName
     );
     this.broadcast(data, targets);
   }
@@ -191,16 +198,25 @@ export class ClientManager {
   }
 
   getPublicRooms(): PublicRoomModel[] {
-    const roomMap = new Map<string, number>();
+    const publicNetworks = new Set<string>();
+    const networkClientsMap = new Map<string, Set<string>>();
 
     for (const client of this.clients) {
-      if (!client.isPublic || !client.networkName) continue;
-      roomMap.set(client.networkName, this.getNetworkClients(client.networkName).length);
+      if (!client.networkName || !client.clientId) continue;
+
+      if (!networkClientsMap.has(client.networkName)) {
+        networkClientsMap.set(client.networkName, new Set());
+      }
+      networkClientsMap.get(client.networkName)!.add(client.clientId);
+
+      if (client.isPublic) {
+        publicNetworks.add(client.networkName);
+      }
     }
 
-    const rooms: PublicRoomModel[] = [...roomMap.entries()].map(([name, clients]) => ({
+    const rooms: PublicRoomModel[] = [...publicNetworks.values()].map(name => ({
       name,
-      clients,
+      clients: networkClientsMap.get(name)?.size || 0,
     }));
 
     rooms.sort((a, b) => b.clients - a.clients || a.name.localeCompare(b.name));

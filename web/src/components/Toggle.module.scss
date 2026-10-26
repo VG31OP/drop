@@ -1,16 +1,21 @@
 $toggle-indicator-size: 18px;
 $track-height: $toggle-indicator-size + 8;
 $track-width: $toggle-indicator-size * 2.4;
-$speed: 0.2s;
+$speed: 0s;
 
 .toggle {
   align-items: center;
   display: flex;
-  margin-bottom: 10px;
+  padding: 12px 0;
+  min-height: 48px;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.toggle:last-of-type {
-  margin-bottom: 0;
+.toggle:not(:last-child) {
+  border-bottom: 2px solid #000000;
 }
 
 .input {
@@ -24,56 +29,66 @@ $speed: 0.2s;
 }
 
 .track {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 999px;
+  background: #ffffff;
+  border: var(--dp-border-divider) solid #000000;
+  border-radius: var(--dp-radius-control);
   cursor: pointer;
   display: flex;
   height: $track-height;
-  margin-inline-end: 12px;
+  margin-inline-end: 14px;
   position: relative;
   width: $track-width;
   min-width: $track-width;
+  box-shadow: 2px 2px 0px #000000;
   transition: background $speed ease-in-out;
 }
 
 .indicator {
-  background: #fff;
-  border-radius: 999px;
-  bottom: 3px;
+  background: var(--dp-color-contrast);
+  border: 2px solid #000000;
+  border-radius: var(--dp-radius-control);
+  bottom: 2px;
   height: $toggle-indicator-size;
-  left: 3px;
+  left: 2px;
   position: absolute;
-  transition: $speed;
+  transition: transform $speed;
   width: $toggle-indicator-size;
   display: grid;
   place-items: center;
 }
 
 .checkmark {
-  fill: #0a0a0f;
+  fill: #000000;
   width: 12px;
   height: 12px;
   opacity: 0;
-  transition: opacity $speed ease-in-out;
 }
 
 .input:checked + .track {
-  background: linear-gradient(140deg, rgba(108, 99, 255, 0.9), rgba(0, 212, 255, 0.65));
-  border-color: rgba(0, 212, 255, 0.3);
+  background: var(--dp-color-emphasis);
 
   .indicator {
     transform: translateX($track-width - $track-height);
+    background: #000000;
   }
 
   .checkmark {
+    fill: #ffffff;
     opacity: 1;
   }
 }
 
+.input:focus-visible + .track {
+  outline: 3px solid #000000;
+  outline-offset: 2px;
+}
+
 .label {
-  font-size: 0.9rem;
-  color: var(--muted);
+  font-family: var(--dp-typography-face);
+  font-size: var(--dp-typography-reading);
+  color: var(--dp-color-ink);
+  font-weight: var(--dp-typography-reading-weight);
+  user-select: none;
 }
 
 [dir='rtl'] {

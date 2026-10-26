@@ -125,35 +125,44 @@ export class ChatStore {
   }
 
   sendChatMessage(body: string) {
+    const trimmed = body?.trim();
+    if (!trimmed) return;
+
     const direct = this.currentChannel !== 'global';
     const clients = direct
       ? this.connection.clients.filter(
           client => client.clientId === this.currentChannel
         )
-      : this.connection.clients;
+      : this.connection.clients.filter(
+          client => client.clientId !== this.connection.clientId
+        );
 
     for (const client of clients) {
       const message: ChatMessageModel = {
         type: MessageType.CHAT,
         targetId: client.clientId,
-        message: body,
+        message: trimmed,
         direct,
       };
 
       this.connection.send(message);
     }
 
-    this.pushMessage(this.currentChannel, this.connection.clientId!, body);
+    if (this.connection.clientId) {
+      this.pushMessage(this.currentChannel, this.connection.clientId, trimmed);
+    }
   }
 
   async onMessage(message: Message) {
     switch (message.type) {
       case MessageType.CHAT:
-        this.pushMessage(
-          message.direct ? message.clientId! : 'global',
-          message.clientId!,
-          message.message
-        );
+        if (message.clientId) {
+          this.pushMessage(
+            message.direct ? message.clientId : 'global',
+            message.clientId,
+            message.message
+          );
+        }
         break;
     }
   }

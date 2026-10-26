@@ -1,8 +1,6 @@
-import { isClipboardItemSupported } from './browser.js';
-
 export const copy = async (text: string) => {
   try {
-    if (isClipboardItemSupported) {
+    if (navigator?.clipboard?.writeText) {
       await navigator.clipboard.writeText(text);
       return;
     }

@@ -3,33 +3,42 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  transition: transform var(--dp-motion-interaction);
 }
 
 .wrapper:not(:last-child) {
-  margin-inline-end: 12px;
+  margin-inline-end: 16px;
 }
 
 .wrapper::after {
   content: '';
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
   background: var(--success);
-  box-shadow: 0 0 0 0 rgba(40, 209, 124, 0.7);
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
   position: absolute;
-  top: 6px;
-  right: 6px;
-  animation: pulse-online 1.7s infinite;
+  top: 4px;
+  right: 8px;
+  z-index: 5;
 }
 
 .tile {
   margin: 0;
   cursor: pointer;
   position: relative;
-  border-radius: 999px;
-  border: 2px dashed rgba(0, 212, 255, 0.55);
-  box-shadow: var(--glow);
-  animation: pulseGlow 2.4s ease-in-out infinite;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-panel) solid var(--dp-color-ink);
+  box-shadow: 4px 4px 0px var(--dp-color-ink);
+  background: var(--dp-color-contrast);
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
+}
+
+.tile:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px var(--dp-color-ink);
+  background: var(--dp-color-emphasis);
 }
 
 .tile input {
@@ -37,10 +46,11 @@
   inset: 0;
   display: block;
   background: transparent;
-  opacity: 0.01;
+  opacity: 0.001;
   cursor: pointer;
   font-size: 0;
-  border-radius: inherit;
+  border-radius: 0;
+  z-index: 10;
 }
 
 .tile .icon {
@@ -50,11 +60,11 @@
   place-items: center;
   font-size: 0;
   pointer-events: none;
+  z-index: 4;
 }
 
 .tile .icon svg {
-  transition: 0.2s ease-in-out color;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--dp-color-ink);
   height: 32px;
   width: auto;
 }
@@ -66,29 +76,20 @@
 .tile.active svg,
 .tile:hover svg,
 .tile:focus-within svg {
-  color: var(--accent);
+  color: #000000;
 }
 
 .name {
   pointer-events: none;
   text-align: center;
-  width: 120px;
-  font-size: 0.82rem;
+  width: 124px;
+  font-family: var(--dp-typography-face);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin-top: 10px;
-  color: var(--text);
+  color: var(--dp-color-ink);
   word-break: break-word;
-}
-
-@keyframes pulse-online {
-  0% {
-    box-shadow: 0 0 0 0 rgba(40, 209, 124, 0.7);
-  }
-
-  70% {
-    box-shadow: 0 0 0 8px rgba(40, 209, 124, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(40, 209, 124, 0);
-  }
+  line-height: 1.3;
 }

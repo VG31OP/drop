@@ -20,7 +20,7 @@ const urlify = (text: string): React.ReactNode => {
   return text.split(urlRegex).map((part, i) => {
     if (part.match(urlRegex)) {
       return (
-        <a href={part} key={i}>
+        <a href={part} key={i} target="_blank" rel="noopener noreferrer">
           {part}
         </a>
       );

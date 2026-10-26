@@ -12,9 +12,17 @@ export const NoticeSection: React.FC = observer(() => {
     return null;
   }
 
+  const isSafeUrl = noticeUrl && /^https?:\/\//i.test(noticeUrl);
+
   return (
     <div className={clsx('subsection', styles.notice)}>
-      {noticeUrl ? <a href={noticeUrl}>{noticeText}</a> : noticeText}
+      {isSafeUrl ? (
+        <a href={noticeUrl} target="_blank" rel="noopener noreferrer">
+          {noticeText}
+        </a>
+      ) : (
+        noticeText
+      )}
     </div>
   );
 });

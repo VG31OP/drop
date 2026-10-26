@@ -6,7 +6,7 @@ abuse_email=""
 
 turn_secret=$(openssl rand -base64 32)
 
-while getopts n:p:e:f flag
+while getopts n:p:e:fs flag
 do
     case "${flag}" in
         n) app_name=${OPTARG};;

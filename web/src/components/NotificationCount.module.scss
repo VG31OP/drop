@@ -2,14 +2,16 @@
   position: absolute;
   inset-block-start: -6px;
   inset-inline-end: -6px;
-  background: linear-gradient(145deg, #ff5f7d, #ff2e65);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 100%;
-  font-size: 10px;
-  width: 18px;
-  height: 18px;
-  color: #fff;
-
+  background: var(--dp-color-signal);
+  border: 2px solid #000000;
+  box-shadow: 2px 2px 0px #000000;
+  border-radius: var(--dp-radius-control);
+  font-family: var(--dp-typography-face);
+  font-size: 11px;
+  font-weight: 900;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;

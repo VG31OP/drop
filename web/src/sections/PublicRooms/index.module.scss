@@ -1,0 +1,14 @@
+.publicRoomsTitle {
+  font-family: var(--dp-typography-face);
+  font-size: 1.15rem;
+  font-weight: var(--dp-typography-display-weight);
+  letter-spacing: var(--dp-typography-display-tracking);
+  text-transform: uppercase;
+  color: var(--dp-color-ink);
+  margin-bottom: 12px;
+  background: var(--dp-color-emphasis);
+  padding: 4px 10px;
+  border: var(--dp-border-divider) solid #000000;
+  box-shadow: 3px 3px 0px #000000;
+  display: inline-block;
+}

@@ -1,68 +1,85 @@
 .list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 14px;
 }
 
 .empty {
-  border-radius: 14px;
-  border: 1px dashed rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 14px;
-  color: var(--muted);
-  font-size: 0.85rem;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-divider) dashed var(--dp-color-ink);
+  background: var(--dp-color-ground);
+  padding: 16px;
+  color: var(--dp-color-ink);
+  font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .room {
   width: 100%;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 12px;
-  transition: 0.2s ease;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-divider) solid var(--dp-color-ink);
+  background: #ffffff;
+  box-shadow: 4px 4px 0px var(--dp-color-ink);
+  padding: 14px 18px;
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-}
-
-.room:hover {
+  gap: 12px;
   text-decoration: none;
-  border-color: rgba(0, 212, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+
+  &:hover {
+    text-decoration: none;
+    background: var(--dp-color-emphasis);
+    box-shadow: 6px 6px 0px var(--dp-color-ink);
+    transform: translate(-2px, -2px);
+  }
+
+  &:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--dp-color-ink);
+  }
 }
 
 .meta {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .code {
   display: block;
-  font-weight: 700;
+  font-family: var(--dp-typography-face);
+  font-weight: 900;
+  font-size: 1.1rem;
   letter-spacing: 0.08em;
+  color: var(--dp-color-ink);
 }
 
 .count {
-  color: var(--muted);
-  font-size: 0.78rem;
+  color: #333333;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--dp-color-ground);
+  padding: 2px 8px;
+  border: 1px solid #000000;
 }
 
 .joinButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: linear-gradient(
-    145deg,
-    rgba(108, 99, 255, 0.45),
-    rgba(0, 212, 255, 0.2)
-  );
-  border: 1px solid rgba(149, 142, 255, 0.45);
-  color: var(--text);
-  font-weight: 600;
-  font-size: 0.82rem;
+  min-height: 40px;
+  padding: 8px 18px;
+  border-radius: var(--dp-radius-control);
+  background: var(--dp-color-field);
+  border: var(--dp-border-annotation) solid var(--dp-color-ink);
+  color: var(--dp-color-ink);
+  font-family: var(--dp-typography-face);
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 2px 2px 0px var(--dp-color-ink);
 }

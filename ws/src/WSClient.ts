@@ -24,7 +24,8 @@ export class WSClient implements Client {
       acceptForwardedFor && req.headers['x-forwarded-for']
         ? req.headers['x-forwarded-for']
         : req.socket.remoteAddress;
-    this.remoteAddress = typeof address === 'string' ? address : address?.[0];
+    const raw = typeof address === 'string' ? address : address?.[0];
+    this.remoteAddress = raw ? raw.split(',')[0].trim() : undefined;
   }
 
   send(message: MessageModel) {

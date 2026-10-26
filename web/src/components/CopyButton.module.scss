@@ -1,19 +1,22 @@
 .feedback {
   pointer-events: none;
-  transition: 0.1s ease-in-out all;
-  background: rgba(10, 10, 15, 0.96);
-  color: var(--text);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 212, 255, 0.28);
-  padding: 5px 10px;
+  background: var(--dp-color-emphasis);
+  color: var(--dp-color-ink);
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-annotation) solid var(--dp-color-ink);
+  box-shadow: 3px 3px 0px var(--dp-color-ink);
+  padding: 4px 10px;
   position: absolute;
   top: -0.5rem;
   left: 50%;
-  font-weight: normal;
-  font-size: 0.8rem;
+  font-family: var(--dp-typography-face);
+  font-weight: 800;
+  font-size: 0.78rem;
+  text-transform: uppercase;
   transform: translate(-50%, -100%);
   opacity: 0;
-  width: 9rem;
+  width: max-content;
+  white-space: nowrap;
 
   &.visible {
     opacity: 1;

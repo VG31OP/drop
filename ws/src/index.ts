@@ -48,12 +48,13 @@ if (useProxy) {
   const STATIC_ROOT = resolve(staticRoot);
 
   app.setNotFoundHandler((req, reply) => {
-    const split = req.url.split('/');
-
-    if (split.length === 2) {
-      // For paths like /xyz we want to send the frontend.
-      // This will not interfere with 404 errors for
-      // truly not found files.
+    const pathname = req.url.split('?')[0];
+    if (
+      req.method === 'GET' &&
+      !pathname.startsWith('/assets/') &&
+      !pathname.startsWith('/locales/') &&
+      !pathname.startsWith('/ws')
+    ) {
       reply.sendFile('index.html', STATIC_ROOT);
       return;
     }

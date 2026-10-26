@@ -10,67 +10,305 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 56px;
-  border-radius: 18px;
-  border: 1px solid var(--surface-border);
-  background: linear-gradient(
-    140deg,
-    rgba(255, 255, 255, 0.12),
-    rgba(255, 255, 255, 0.03)
-  );
-  box-shadow: var(--shadow-soft), var(--shadow-inset);
-  backdrop-filter: blur(20px);
-  padding: 8px 12px;
+  gap: 12px;
+  min-height: 60px;
+  border-radius: var(--dp-radius-control);
+  border: var(--dp-border-panel) solid var(--dp-color-ink);
+  background: var(--dp-color-emphasis);
+  box-shadow: 5px 5px 0px var(--dp-color-ink);
+  padding: 8px 16px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--text);
-  font-weight: 700;
-  font-size: 1.1rem;
+  color: var(--dp-color-ink);
+  font-family: var(--dp-typography-face);
+  font-weight: var(--dp-typography-display-weight);
+  letter-spacing: var(--dp-typography-display-tracking);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  text-decoration: none;
 
-  svg {
-    fill: var(--primary);
-    width: 24px;
-    height: 24px;
+  &:hover {
+    text-decoration: none;
+    color: var(--dp-color-ink);
   }
 }
 
-.roomCode {
-  min-width: 92px;
-  text-align: center;
-  letter-spacing: 0.12em;
-  font-weight: 700;
-  font-size: 0.8rem;
-  color: var(--accent);
-  padding: 10px 8px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  background: rgba(0, 212, 255, 0.08);
+.iconWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  padding: 4px;
+  border: 2px solid #000000;
+
+  svg {
+    fill: var(--dp-color-emphasis);
+    width: 22px;
+    height: 22px;
+  }
 }
 
-.qr {
-  min-height: 44px;
-  min-width: 44px;
-  border-radius: 12px;
-  color: var(--text);
-  background: linear-gradient(
-    135deg,
-    rgba(108, 99, 255, 0.45),
-    rgba(108, 99, 255, 0.18)
-  );
-  border: 1px solid rgba(125, 117, 255, 0.5);
+.statusDot {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  border: 2px solid #000000;
+  background-color: var(--dp-color-signal);
+
+  &[data-connected='true'] {
+    background-color: var(--success);
+  }
+}
+
+.brandTitle {
+  font-weight: 900;
+  color: var(--dp-color-ink);
+  letter-spacing: -0.05em;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roomBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 4px 14px;
+  border-radius: 0;
+  border: var(--dp-border-divider) solid #000000;
+  background: var(--dp-color-contrast);
+  color: #000000;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #000000;
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
+
+  &:hover {
+    background: #fff;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000000;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000000;
+  }
+}
+
+.roomPrefix {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  color: #000000;
+  background: var(--dp-color-field);
+  padding: 2px 6px;
+  border: 1px solid #000000;
+  text-transform: uppercase;
+}
+
+.roomCode {
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  color: #000000;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.roomAction {
+  display: inline-flex;
+  align-items: center;
+}
+
+.copyIcon {
+  font-size: 1.1rem;
+  color: #000000;
+}
+
+.copiedText {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #000000;
+  background: var(--success);
+  padding: 2px 6px;
+  border: 1px solid #000000;
+
+  svg {
+    font-size: 0.95rem;
+  }
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.connectButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: 0;
+  background: var(--dp-color-field);
+  border: var(--dp-border-divider) solid #000000;
+  color: #000000;
+  font-weight: 900;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #000000;
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
+
+  &:hover {
+    background: #e2d1ff;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000000;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000000;
+  }
+}
+
+.qrIcon {
+  font-size: 1.25rem;
+  color: #000000;
+}
+
+.connectLabel {
+  display: inline;
+}
+
+.shareIconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  border: var(--dp-border-divider) solid #000000;
+  background: var(--dp-color-signal);
+  color: #ffffff;
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px #000000;
+  transition: transform var(--dp-motion-interaction), box-shadow var(--dp-motion-interaction);
+
+  &:hover {
+    background: #ff2914;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px #000000;
+  }
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #000000;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 8px 10px;
+  }
+
+  .menu {
+    min-height: 52px;
+    padding: 6px 10px;
+    gap: 8px;
+    border-width: 3px;
+    box-shadow: 3px 3px 0px #000000;
+  }
+
+  .brandTitle {
+    display: none;
+  }
+
+  .connectLabel {
+    display: none;
+  }
+
+  .connectButton {
+    padding: 6px 10px;
+    min-width: 38px;
+    touch-action: manipulation;
+  }
+
+  .roomBadge {
+    touch-action: manipulation;
+  }
+
+  .shareIconButton {
+    touch-action: manipulation;
+  }
+
+  .roomPrefix {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    padding: 6px 8px;
+  }
+
+  .menu {
+    padding: 4px 6px;
+    gap: 6px;
+  }
+
+  .roomBadge {
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .roomCode {
+    font-size: 0.82rem;
+  }
+
+  .shareIconButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .connectButton {
+    min-height: 36px;
+    padding: 4px 8px;
+  }
 }
 
 @media (min-width: 960px) {
   .header {
-    padding: 18px 20px 10px;
+    padding: 16px 24px 10px;
   }
 
   .menu {
-    min-height: 62px;
-    padding: 8px 14px;
+    min-height: 64px;
+    padding: 10px 20px;
+  }
+
+  .logo {
+    font-size: 1.35rem;
   }
 }

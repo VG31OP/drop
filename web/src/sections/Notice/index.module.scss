@@ -1,6 +1,16 @@
 .notice {
+  background: var(--dp-color-emphasis);
+  border: var(--dp-border-divider) solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  color: #000000;
+  font-weight: 800;
+  font-size: 0.95rem;
+
   a {
     display: inline;
     white-space: unset;
+    color: #000000;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
   }
 }

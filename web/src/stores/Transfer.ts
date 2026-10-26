@@ -47,6 +47,8 @@ export class Transfer {
   transferId: string;
   receiving: boolean;
 
+  candidateQueue: RTCIceCandidateInit[] = [];
+
   constructor(
     private network: NetworkStore,
     private connection: Connection,
@@ -134,7 +136,9 @@ export class Transfer {
 
   cancel() {
     this.stop();
-    this.sendAction(ActionMessageActionType.CANCEL);
+    if (!this.isDone) {
+      this.sendAction(ActionMessageActionType.CANCEL);
+    }
     this.network.removeTransfer(this.transferId);
   }
 
@@ -157,10 +161,27 @@ export class Transfer {
       : undefined;
   }
 
-  addIceCandidate(candidate: RTCIceCandidate) {
-    this.validPeerConnection()
-      ?.addIceCandidate(candidate)
-      .catch(() => {});
+  addIceCandidate(candidate: RTCIceCandidateInit) {
+    const pc = this.validPeerConnection();
+    if (!pc || !pc.remoteDescription) {
+      this.candidateQueue.push(candidate);
+      return;
+    }
+
+    pc.addIceCandidate(candidate).catch(() => {});
+  }
+
+  private async flushIceCandidates() {
+    const pc = this.validPeerConnection();
+    if (!pc || !pc.remoteDescription || !this.candidateQueue.length) {
+      return;
+    }
+
+    const queued = [...this.candidateQueue];
+    this.candidateQueue = [];
+    for (const candidate of queued) {
+      await pc.addIceCandidate(candidate).catch(() => {});
+    }
   }
 
   timeElapsed() {
@@ -274,9 +295,11 @@ export class Transfer {
 
   async start(remoteDescription?: any) {
     if (remoteDescription?.type === 'answer') {
-      this.validPeerConnection()
-        ?.setRemoteDescription(remoteDescription)
-        .catch(() => {});
+      const pc = this.validPeerConnection();
+      if (pc) {
+        await pc.setRemoteDescription(remoteDescription).catch(() => {});
+        await this.flushIceCandidates();
+      }
       return;
     }
 
@@ -318,6 +341,7 @@ export class Transfer {
 
     if (this.receiving) {
       await connection.setRemoteDescription(remoteDescription);
+      await this.flushIceCandidates();
       const answer = await connection.createAnswer();
       await connection.setLocalDescription(answer);
       this.sendDescription(connection.localDescription!);
@@ -370,13 +394,22 @@ export class Transfer {
 
         const fileReader = new FileReader();
         let offset = 0;
+        let isReading = false;
+        let pendingOffset: number | null = null;
 
         const nextSlice = (currentOffset: number) => {
+          if (isReading) {
+            pendingOffset = currentOffset;
+            return;
+          }
+          isReading = true;
+          pendingOffset = null;
           const slice = file.slice(currentOffset, currentOffset + bufferSize);
           fileReader.readAsArrayBuffer(slice);
         };
 
         fileReader.addEventListener('load', e => {
+          isReading = false;
           if (this.isDone) return;
           const buffer = e.target!.result as ArrayBuffer;
 
@@ -393,15 +426,19 @@ export class Transfer {
 
           if (offset >= file.size) {
             this.stateComplete();
-            // Uncomment the next line if there are issues with transfers getting stuck at 100%.
-            // channel.close();
           } else if (channel.bufferedAmount < bufferSize / 2) {
             nextSlice(offset);
+          } else if (pendingOffset !== null) {
+            nextSlice(pendingOffset);
           }
         });
 
         channel.bufferedAmountLowThreshold = bufferSize / 2;
-        channel.addEventListener('bufferedamountlow', () => nextSlice(offset));
+        channel.addEventListener('bufferedamountlow', () => {
+          if (offset < file.size) {
+            nextSlice(offset);
+          }
+        });
 
         nextSlice(0);
       });

@@ -1,23 +1,37 @@
 .clientName {
   display: flex;
   align-items: center;
-  min-height: 44px;
+  min-height: 48px;
 }
 
 .clientName button {
-  margin-inline-start: 0.5em;
+  margin-inline-start: 0.75em;
 }
 
 .clientName button svg {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+}
+
+.clientName strong {
+  font-family: var(--dp-typography-face);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--dp-color-ink);
 }
 
 .clientName input {
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
+  padding: 8px 14px;
+  background: #ffffff;
+  border: var(--dp-border-divider) solid #000000;
+  border-radius: var(--dp-radius-control);
+  box-shadow: 3px 3px 0px #000000;
   min-height: 44px;
+  font-family: var(--dp-typography-face);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 
 .view,

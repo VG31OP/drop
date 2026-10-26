@@ -30,6 +30,7 @@
     "@fastify/http-proxy": "^9.2.1",
     "@types/node": "^20.8.9",
     "@types/ws": "^8.5.8",
-    "tsx": "^3.14.0"
+    "tsx": "^3.14.0",
+    "typescript": "^5.2.2"
   }
 }
