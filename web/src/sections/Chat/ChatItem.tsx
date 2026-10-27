@@ -37,10 +37,10 @@ export const ChatItem: React.FC<ChatItemProps> = observer(({ item }) => {
   const client = connection.clientCache.get(item.clientId);
 
   useLayoutEffect(() => {
-    if (messageRef.current!.offsetHeight < 50) {
+    if (messageRef.current && messageRef.current.offsetHeight < 50) {
       setExpanded(true);
     }
-  }, [setExpanded]);
+  }, []);
 
   return (
     <li

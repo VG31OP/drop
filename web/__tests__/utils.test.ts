@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { randomString } from '../src/utils/string.js';
 import { tryParse, getItem, setItem } from '../src/utils/storage.js';
 import { replaceUrlParameters } from '../src/utils/url.js';
+import { copy } from '../src/utils/copy.js';
 
 describe('Web Utilities', () => {
   describe('randomString', () => {
@@ -100,6 +101,57 @@ describe('Web Utilities', () => {
       const url = 'stun:(hostname):(port)';
       const replaced = replaceUrlParameters(url);
       expect(replaced).toBe('stun:localhost:5000');
+    });
+  });
+
+  describe('copy utils', () => {
+    it('uses navigator.clipboard.writeText when available', async () => {
+      const writeTextMock = vi.fn().mockResolvedValue(undefined);
+      Object.defineProperty(globalThis, 'navigator', {
+        value: {
+          clipboard: {
+            writeText: writeTextMock,
+          },
+        },
+        configurable: true,
+        writable: true,
+      });
+
+      await copy('hello filedrop');
+      expect(writeTextMock).toHaveBeenCalledWith('hello filedrop');
+    });
+
+    it('falls back gracefully to document.execCommand when clipboard API fails', async () => {
+      Object.defineProperty(globalThis, 'navigator', {
+        value: {
+          clipboard: {
+            writeText: vi.fn().mockRejectedValue(new Error('Permission denied')),
+          },
+        },
+        configurable: true,
+        writable: true,
+      });
+
+      const execCommandMock = vi.fn();
+      Object.defineProperty(globalThis, 'document', {
+        value: {
+          createElement: vi.fn(() => ({
+            style: {},
+            focus: vi.fn(),
+            select: vi.fn(),
+          })),
+          body: {
+            appendChild: vi.fn(),
+            removeChild: vi.fn(),
+          },
+          execCommand: execCommandMock,
+        },
+        configurable: true,
+        writable: true,
+      });
+
+      await expect(copy('fallback text')).resolves.not.toThrow();
+      expect(execCommandMock).toHaveBeenCalledWith('copy');
     });
   });
 });

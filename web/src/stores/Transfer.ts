@@ -433,6 +433,14 @@ export class Transfer {
           }
         });
 
+        fileReader.addEventListener('error', () => {
+          isReading = false;
+          this.stateFailed();
+          try {
+            channel.close();
+          } catch {}
+        });
+
         channel.bufferedAmountLowThreshold = bufferSize / 2;
         channel.addEventListener('bufferedamountlow', () => {
           if (offset < file.size) {

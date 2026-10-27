@@ -124,6 +124,13 @@ export class Connection {
     this.eventListeners.get(type)!.add(handler);
   }
 
+  off(type: 'message', handler: (message: Message) => void) {
+    const set = this.eventListeners.get(type);
+    if (set) {
+      set.delete(handler);
+    }
+  }
+
   emit(type: 'message', message: Message) {
     const set = this.eventListeners.get(type);
     if (set) {

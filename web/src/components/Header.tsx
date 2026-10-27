@@ -9,6 +9,7 @@ import { DropIcon } from './DropIcon.js';
 import { applicationStore, connection, networkStore } from '../stores/index.js';
 import { copy } from '../utils/copy.js';
 import { useTimedState } from '../utils/hooks.js';
+import { isShareSupported } from '../utils/browser.js';
 
 export const Header: React.FC = observer(() => {
   const { t } = useTranslation();
@@ -71,7 +72,7 @@ export const Header: React.FC = observer(() => {
             <IoQrCode className={styles.qrIcon} />
             <span className={styles.connectLabel}>{t('tabs.connect')}</span>
           </button>
-          {navigator.share && (
+          {isShareSupported && (
             <button
               type="button"
               onClick={() => applicationStore.share(window.location.href)}

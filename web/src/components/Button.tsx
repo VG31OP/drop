@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLButtonElement>,
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {}
 

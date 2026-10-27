@@ -1,0 +1,48 @@
+.fallback {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.card {
+  max-width: 440px;
+  width: 100%;
+  padding: 32px 24px;
+  background: var(--dp-color-canvas);
+  border: var(--dp-border-panel) solid var(--dp-color-ink);
+  box-shadow: 6px 6px 0px var(--dp-color-ink);
+  border-radius: var(--dp-radius-control);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--dp-color-accent);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--dp-color-ink);
+}
+
+.message {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--dp-color-muted);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}

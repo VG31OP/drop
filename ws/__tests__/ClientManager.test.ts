@@ -6,6 +6,7 @@ import {
   NetworkNameMessageModel,
   MakePublicMessageModel,
   TargetedMessageModel,
+  ClientNameMessageModel,
 } from '@filedrop/types';
 
 import { ClientManager } from '../src/ClientManager.js';
@@ -321,5 +322,31 @@ describe('ClientManager', () => {
 
     clientManager.removeBrokenClients();
     expect(client.networkName).toBeUndefined();
+  });
+
+  it('trims client names and ignores empty whitespace names', async () => {
+    const clientManager = new ClientManager();
+
+    const client = new TestClient();
+    clientManager.handleMessage(client, {
+      type: MessageType.INITIALIZE,
+      secret: 'ABCABCABCABC1',
+    } as InitializeMessageModel);
+
+    const initialName = client.clientName;
+
+    // Sending whitespace should be ignored
+    clientManager.handleMessage(client, {
+      type: MessageType.CLIENT_NAME,
+      clientName: '   ',
+    } as ClientNameMessageModel);
+    expect(client.clientName).toBe(initialName);
+
+    // Sending trimmed name
+    clientManager.handleMessage(client, {
+      type: MessageType.CLIENT_NAME,
+      clientName: '  Cool Device  ',
+    } as ClientNameMessageModel);
+    expect(client.clientName).toBe('Cool Device');
   });
 });

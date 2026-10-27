@@ -20,6 +20,7 @@ import { Toggle } from '../../components/Toggle.js';
 import { mimeToExtension } from '../../utils/file.js';
 import { copy } from '../../utils/copy.js';
 import { useTimedState } from '../../utils/hooks.js';
+import { isShareSupported } from '../../utils/browser.js';
 
 export const NetworkSection: React.FC = observer(() => {
   const clients = networkStore.clients;
@@ -32,7 +33,7 @@ export const NetworkSection: React.FC = observer(() => {
 
   const handleShareOrCopy = () => {
     const url = window.location.href;
-    if (navigator.share) {
+    if (isShareSupported) {
       applicationStore.share(url);
     } else {
       copy(url);
@@ -136,7 +137,7 @@ export const NetworkSection: React.FC = observer(() => {
                     <>
                       <IoCheckmark /> {t('copied')}
                     </>
-                  ) : navigator.share ? (
+                  ) : isShareSupported ? (
                     <>
                       <IoShareSocialOutline /> {t('share')} Link
                     </>

@@ -6,6 +6,7 @@ import { Home } from './screens/Home.js';
 import { Redirect } from './screens/Redirect.js';
 import { Header } from './components/Header.js';
 import { Status } from './components/Status.js';
+import { ErrorBoundary } from './components/ErrorBoundary.js';
 
 const Abuse = React.lazy(() => import('./screens/Abuse.js'));
 const TechnicalInformation = React.lazy(
@@ -24,33 +25,35 @@ export const App: React.FC = () => {
       <Header />
       <Status />
       <main className="appContent">
-        <Suspense>
-          <Router>
-            <Switch>
-              <Route path="/abuse">
-                <Abuse />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/privacy">
-                <Privacy />
-              </Route>
-              <Route path="/tos">
-                <ToS />
-              </Route>
-              <Route path="/tech">
-                <TechnicalInformation />
-              </Route>
-              <Route path="/:networkName">
-                <Home />
-              </Route>
-              <Route>
-                <Redirect />
-              </Route>
-            </Switch>
-          </Router>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense>
+            <Router>
+              <Switch>
+                <Route path="/abuse">
+                  <Abuse />
+                </Route>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/privacy">
+                  <Privacy />
+                </Route>
+                <Route path="/tos">
+                  <ToS />
+                </Route>
+                <Route path="/tech">
+                  <TechnicalInformation />
+                </Route>
+                <Route path="/:networkName">
+                  <Home />
+                </Route>
+                <Route>
+                  <Redirect />
+                </Route>
+              </Switch>
+            </Router>
+          </Suspense>
+        </ErrorBoundary>
       </main>
     </div>
   );

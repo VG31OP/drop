@@ -99,11 +99,20 @@ app.register(async function (fastify) {
 
     clientManager.sendAppInfo(client);
 
+    const initTimeout = setTimeout(() => {
+      if (!client.initialized) {
+        try {
+          ws.close();
+        } catch {}
+      }
+    }, 30000);
+
     ws.on('error', error => {
       console.log('[ERROR (Handled)]', error.message);
     });
 
-    ws.on('message', (data: string) => {
+    ws.on('message', (raw: any) => {
+      const data = typeof raw === 'string' ? raw : raw?.toString();
       // Prevents DDoS and abuse.
       if (!data || data.length > maxSize) return;
 
@@ -117,6 +126,7 @@ app.register(async function (fastify) {
     });
 
     ws.on('close', () => {
+      clearTimeout(initTimeout);
       clientManager.removeClient(client);
     });
   });

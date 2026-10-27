@@ -114,15 +114,18 @@ export class ClientManager {
       client.isPublic = !!message.value;
       this.sendPublicRoomsMessage();
     } else if (isClientNameMessageModel(message)) {
-      const clients = [...this.clients].filter(
+      const trimmedName = message.clientName.trim();
+      if (!trimmedName) return;
+
+      const matchingClients = [...this.clients].filter(
         c => c.clientId === client.clientId
       );
 
-      for (const client of clients) {
-        client.clientName = message.clientName;
+      for (const targetClient of matchingClients) {
+        targetClient.clientName = trimmedName;
 
-        if (client.networkName) {
-          this.setNetworkName(client, client.networkName);
+        if (targetClient.networkName) {
+          this.setNetworkName(targetClient, targetClient.networkName);
         }
       }
     } else if (requireCrypto && !isEncryptedMessageModel(message)) {
