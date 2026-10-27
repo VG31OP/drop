@@ -218,38 +218,37 @@ export const Home: React.FC = observer(() => {
 
             <svg
               className={styles.squiggleArrow}
-              viewBox="0 0 74 92"
+              viewBox="0 0 100 130"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
             >
-              {/* Energetic Neo-Brutalist hand-drawn squiggle arrow */}
+              {/* Smooth flowing hand-drawn doodle arrow spine */}
               <path
-                d="M 22 4 C 54 12, 62 30, 40 44 C 18 58, 22 72, 42 76"
+                d="M 44 4 C 82 24, 76 54, 46 72 C 26 84, 32 98, 48 106"
                 stroke="#000000"
-                strokeWidth="4"
+                strokeWidth="6"
                 strokeLinecap="round"
+              />
+              {/* Sculpted classic comic solid arrowhead */}
+              <path
+                d="M 48 126 L 24 94 Q 48 102, 72 94 Z"
+                fill="#000000"
+                stroke="#000000"
+                strokeWidth="2"
                 strokeLinejoin="round"
               />
-              {/* Sharp downward arrowhead */}
+              {/* Comic speed accent ticks */}
               <path
-                d="M 30 66 L 42 80 L 52 68"
+                d="M 74 52 L 84 56"
                 stroke="#000000"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              {/* Action doodle marks */}
-              <path
-                d="M 56 46 L 64 49"
-                stroke="#000000"
-                strokeWidth="3"
+                strokeWidth="3.5"
                 strokeLinecap="round"
               />
               <path
-                d="M 54 58 L 62 63"
+                d="M 70 66 L 80 72"
                 stroke="#000000"
-                strokeWidth="3"
+                strokeWidth="3.5"
                 strokeLinecap="round"
               />
             </svg>
