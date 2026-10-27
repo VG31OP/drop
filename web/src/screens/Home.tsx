@@ -13,6 +13,7 @@ import clsx from 'clsx';
 import {
   IoChatbubbles,
   IoCloudUpload,
+  IoPencil,
   IoPhonePortrait,
   IoSettings,
 } from 'react-icons/io5';
@@ -199,12 +200,71 @@ export const Home: React.FC = observer(() => {
           </div>
 
           <div
+            className={styles.sidebarRenameCallout}
+            onClick={() => applicationStore.setTab('devices')}
+            role="button"
+            tabIndex={0}
+            title="Click to change your username"
+          >
+            <div className={styles.calloutTag}>
+              <div className={styles.calloutHeader}>
+                <IoPencil className={styles.calloutPencil} />
+                <span>TIP</span>
+              </div>
+              <div className={styles.calloutMessage}>
+                You can change username from here!
+              </div>
+            </div>
+
+            <svg
+              className={styles.squiggleArrow}
+              viewBox="0 0 74 92"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Energetic Neo-Brutalist hand-drawn squiggle arrow */}
+              <path
+                d="M 22 4 C 54 12, 62 30, 40 44 C 18 58, 22 72, 42 76"
+                stroke="#000000"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Sharp downward arrowhead */}
+              <path
+                d="M 30 66 L 42 80 L 52 68"
+                stroke="#000000"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Action doodle marks */}
+              <path
+                d="M 56 46 L 64 49"
+                stroke="#000000"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+              <path
+                d="M 54 58 L 62 63"
+                stroke="#000000"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          <div
             className={styles.sidebarFooter}
             onClick={() => applicationStore.setTab('devices')}
-            title="Your device info"
+            title="Click to edit your username"
           >
             <span className={styles.sidebarOnlineDot} />
             <span className={styles.sidebarDeviceName}>{currentDeviceName}</span>
+            <span className={styles.sidebarEditIcon} aria-label="Edit name">
+              <IoPencil />
+            </span>
           </div>
         </aside>
 
