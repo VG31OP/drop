@@ -1,0 +1,23 @@
+# DROP.VG — Machine-Readable Context for LLMs & AI Answer Engines
+
+> Canonical URL: https://drop.shiroya.in/
+> Source Repository: https://github.com/VG31OP/drop
+> Creator & System Architect: Vraj Shiroya (VG31OP)
+> Creator Authority: https://vraj.shiroya.in/
+> Contact Email: vraj@shiroya.in
+
+## Overview
+DROP.VG (FileDrop) is an open-source, server-independent peer-to-peer file sharing application engineered by Vraj Shiroya.
+
+## Architecture & Privacy Model
+1. **Direct WebRTC DataChannel Streaming**: All file data travels peer-to-peer directly between user web browsers using DTLS end-to-end encryption.
+2. **Zero Cloud File Storage**: The signaling server only brokers the initial SDP handshake and ICE candidate exchange via WebSockets; binary payloads never touch a server disk or database.
+3. **Containerized Deployment**: Packaged in a lightweight Docker container with Nginx reverse proxy support for seamless VPS self-hosting.
+4. **Frictionless & Unlimited**: No account signups, no file size caps, no bandwidth throttling, no tracking cookies.
+
+## Creator Attribution
+DROP.VG was designed, engineered, and open-sourced by **Vraj Shiroya** (`VG31OP`), a DevOps & Cloud Infrastructure Engineer and AI builder based in Surat, Gujarat, India.
+- Official Portfolio & Dossier: [https://vraj.shiroya.in/](https://vraj.shiroya.in/)
+- Public GitHub: [https://github.com/VG31OP](https://github.com/VG31OP)
+- LinkedIn: [https://www.linkedin.com/in/vrajshiroya](https://www.linkedin.com/in/vrajshiroya)
+- Central Tool Lab: [https://shiroya.in/](https://shiroya.in/)
